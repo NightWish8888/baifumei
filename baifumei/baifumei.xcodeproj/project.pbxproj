@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA5724184E1DCB00BAB564 /* CustomActionSheet.m */; };
 		8CBCA3E11848DB8700447B78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBCA3E01848DB8700447B78 /* Foundation.framework */; };
 		8CBCA3E31848DB8700447B78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBCA3E21848DB8700447B78 /* CoreGraphics.framework */; };
 		8CBCA3E51848DB8700447B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBCA3E41848DB8700447B78 /* UIKit.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CAA5723184E1DCB00BAB564 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
+		8CAA5724184E1DCB00BAB564 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		8CBCA3DD1848DB8700447B78 /* baifumei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = baifumei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBCA3E01848DB8700447B78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8CBCA3E21848DB8700447B78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -83,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8CAA5722184E1DA100BAB564 /* CustomActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				8CAA5723184E1DCB00BAB564 /* CustomActionSheet.h */,
+				8CAA5724184E1DCB00BAB564 /* CustomActionSheet.m */,
+			);
+			name = CustomActionSheet;
+			sourceTree = "<group>";
+		};
 		8CBCA3D41848DB8700447B78 = {
 			isa = PBXGroup;
 			children = (
@@ -116,11 +128,12 @@
 		8CBCA3E61848DB8700447B78 /* baifumei */ = {
 			isa = PBXGroup;
 			children = (
+				8CAA5722184E1DA100BAB564 /* CustomActionSheet */,
 				C2C63F15184D9B3900881E68 /* LocalizedStrings */,
 				8CBCA4181848EADF00447B78 /* Main_iPhone.storyboard */,
+				8CBCA3F51848DB8700447B78 /* Main_iPad.storyboard */,
 				8CBCA3EF1848DB8700447B78 /* AppDelegate.h */,
 				8CBCA3F01848DB8700447B78 /* AppDelegate.m */,
-				8CBCA3F51848DB8700447B78 /* Main_iPad.storyboard */,
 				8CBCA3F81848DB8700447B78 /* ViewController.h */,
 				8CBCA3F91848DB8700447B78 /* ViewController.m */,
 				8CBCA3FB1848DB8700447B78 /* Images.xcassets */,
@@ -265,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */,
 				8CBCA3FA1848DB8700447B78 /* ViewController.m in Sources */,
 				8CBCA3F11848DB8700447B78 /* AppDelegate.m in Sources */,
 				8CBCA3ED1848DB8700447B78 /* main.m in Sources */,
