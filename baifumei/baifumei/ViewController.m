@@ -52,7 +52,7 @@
     // Dispose of any resources that can be recreated.
 }
 -(UIButton *)actionBtn:(NSString *)title Image:(NSString *)imageName Frame:(CGRect)frame{
-    CATransaction
+
     
     UIButton *btn = [[UIButton alloc] initWithFrame:frame];
     [btn setBackgroundImage:[UIImage imageNamed:@"白按钮.png"] forState:UIControlStateNormal];
