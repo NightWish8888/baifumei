@@ -72,6 +72,7 @@
 }
 
 - (IBAction)share:(UIButton *)sender {
+    NSLog(@"Hello!");
 }
 
 - (IBAction)love:(id)sender {
