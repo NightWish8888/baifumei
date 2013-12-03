@@ -59,13 +59,12 @@
     UIButton *ten_btn = [self actionBtn:NSLocalizedString(@"use tengxun login", @"用QQ账号登陆") Image:@"QQ账号登录.png" Frame:CGRectMake((ksuperViewWidth-kbtnWidth)*.5,ten_y, kbtnWidth, kbtnHeight) action:@selector(QQ:) NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png"  TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, -10, 0, 10)];
     
     float cancel_y = ten_btn.frame.origin.y + ten_btn.frame.size.height + kbtnPadding_V;
-    UIButton *cancel_btn = [self actionBtn:NSLocalizedString(@"cancel", @"取消") Image:nil Frame:CGRectMake((ksuperViewWidth-kbtnWidth)*.5,cancel_y, kbtnWidth, kbtnHeight) action:@selector(cancel:) NormalImg:@"黑按钮.png" HighlightImg:@"黑按钮.png"  TitleColor:[UIColor whiteColor] TitleEdgeInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    UIButton *cancel_btn = [self actionBtn:NSLocalizedString(@"cancel", @"取消") Image:nil Frame:CGRectMake((ksuperViewWidth-kbtnWidth)*.5,cancel_y, kbtnWidth, kbtnHeight) action:@selector(cancel:) NormalImg:@"黑按钮.png" HighlightImg:@"黑按钮按下.png"  TitleColor:[UIColor whiteColor] TitleEdgeInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     
     [_customView addSubview:sina_btn];
     [_customView addSubview:ten_btn];
     [_customView addSubview:cancel_btn];
     [self.superview addSubview:_customView];
-    
     [self appearAnimation];
 }
 -(void)appearAnimation{
@@ -89,6 +88,7 @@
     [self dismissWithClickedButtonIndex:1 animated:YES];
     [self.delegate actionSheet:self clickedButtonAtIndex:1];
     [self dismissAnimation];
+    
 }
 -(void)Sina:(UIButton *)sender{
     [self dismissWithClickedButtonIndex:0 animated:YES];

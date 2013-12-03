@@ -52,14 +52,9 @@
 }
 
 - (IBAction)rate:(UIButton *)sender {
-//    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"取消") destructiveButtonTitle:nil otherButtonTitles:@"",@"", nil];
-//    [sheet setTag:100];
-//    
-//    
-//
-//    [sheet showInView:self.view];
-//    [sheet setFrame:CGRectMake(sheet.frame.origin.x, 180, sheet.frame.size.width, 300)];
     CustomActionSheet *sheet = [[CustomActionSheet alloc] init];
+    sheet.delegate = self;
+    [sheet setTag:100];
     [sheet showInView:self.view];
 }
 
