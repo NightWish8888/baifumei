@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>99ED5156-5CAF-4A43-BE1A-C0932F1F9D42</string>
+	<key>IDESourceControlProjectName</key>
+	<string>baifumei</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>455EC0ED-D220-4A10-985B-27A90EDE5CD6</key>
+		<string>ssh://github.com/NightWish8888/baifumei.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>baifumei/baifumei.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>455EC0ED-D220-4A10-985B-27A90EDE5CD6</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/NightWish8888/baifumei.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>455EC0ED-D220-4A10-985B-27A90EDE5CD6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>455EC0ED-D220-4A10-985B-27A90EDE5CD6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BFM</string>
+		</dict>
+	</array>
+</dict>
+</plist>

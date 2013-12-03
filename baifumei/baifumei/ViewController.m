@@ -38,6 +38,7 @@
     [setbtn addTarget:self action:@selector(setConfigure:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *setItem = [[UIBarButtonItem alloc] initWithCustomView:setbtn];
     [self.navigationItem setRightBarButtonItem:setItem];
+    NSLog(@"COMPANY  TEST......");
 }
 -(void)setConfigure:(UIButton *)sender{
     
