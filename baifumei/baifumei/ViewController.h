@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UIActionSheetDelegate>
 @property (nonatomic,strong) UIButton *menuItem;
+- (IBAction)rate:(UIButton *)sender;
+- (IBAction)share:(UIButton *)sender;
+- (IBAction)love:(id)sender;
+- (IBAction)more:(UIButton *)sender;
+
 @end
