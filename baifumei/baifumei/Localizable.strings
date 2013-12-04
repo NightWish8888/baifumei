@@ -1,7 +1,11 @@
 /******通用******/
 "cancel" = "取消";
-
-/*****************/
+"back" = "返回";
+/********其他*********/
 "use weibo login" = "用微博账号登陆";
 "use tengxun login" = "用QQ账号登陆";
 "content" = "这里是白富美。。。。";
+"web view" = "网页浏览";
+"reload" = "重新载入";
+"view origin web" = "查看原网页";
+"return err" = "错误反馈";

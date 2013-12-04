@@ -17,7 +17,7 @@
     NSArray *shareList = [ShareSDK getShareListWithType:ShareTypeQQSpace,ShareTypeWeixiSession,ShareTypeWeixiTimeline,ShareTypeQQ,ShareTypeSMS,ShareTypeCopy, nil];
     
     //创建分享内容
-    //    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
     id<ISSContent> publishContent = [ShareSDK content:NSLocalizedString(@"content", @"分享内容")
                                        defaultContent:@""
                                                 image:[ShareSDK imageWithPath:kLogoImg]

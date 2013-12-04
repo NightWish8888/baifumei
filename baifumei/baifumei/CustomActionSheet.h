@@ -11,7 +11,9 @@
 
 @interface CustomActionSheet : UIActionSheet
 {
-    
+    NSMutableArray *btnArray;
 }
 @property (nonatomic,strong) UIView *customView;
+-(id)initWithArray:(NSMutableArray *)array CancelBtnTitle:(NSString *)cancelTitle;
+-(void)addItem:(UIControl *)btn;
 @end

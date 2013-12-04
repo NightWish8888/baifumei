@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#define kbtnWidth       260
+#define kbtnHeight      40
 
 @interface ViewController ()
 
@@ -50,9 +52,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(UIButton *)actionBtn:(NSString *)title Image:(NSString *)imageName Frame:(CGRect)frame  NormalImg:(NSString *)normalImg HighlightImg:(NSString *)highlightImg TitleColor:(UIColor *)color TitleEdgeInset:(UIEdgeInsets)titleEdgeInsets{
+    
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setFrame:frame];
+    [btn setBackgroundImage:[UIImage imageNamed:normalImg] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:highlightImg] forState:UIControlStateHighlighted];
+    [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, -40, 0, 40)];
+    [btn setTitleEdgeInsets:titleEdgeInsets];
+    [btn setTitleColor:color forState:UIControlStateNormal];
+    [btn.titleLabel setFont:[UIFont boldSystemFontOfSize:19]];
+    return btn;
+}
 - (IBAction)rate:(UIButton *)sender {
-    CustomActionSheet *sheet = [[CustomActionSheet alloc] init];
+
+     UIButton *sina_btn = [self actionBtn:NSLocalizedString(@"use weibo login", @"用微博账号登陆") Image:@"新浪微博账号登录.png" Frame:CGRectMake(0, 0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png" TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, -10, 0, 10)];
+
+     UIButton *ten_btn = [self actionBtn:NSLocalizedString(@"use tengxun login", @"用QQ账号登陆") Image:@"QQ账号登录.png" Frame:CGRectMake(0,0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png"  TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, -10, 0, 10)];
+    
+    NSMutableArray *btnArray = [ NSMutableArray arrayWithObjects:sina_btn,ten_btn, nil];
+    CustomActionSheet *sheet = [[CustomActionSheet alloc] initWithArray:btnArray CancelBtnTitle:NSLocalizedString(@"cancel", @"取消")];
     sheet.delegate = self;
     [sheet setTag:100];
     [sheet showInView:self.view];
@@ -66,6 +88,17 @@
 }
 
 - (IBAction)more:(UIButton *)sender {
+    
+    UIButton *reloadBtn = [self actionBtn:NSLocalizedString(@"reload", @"重新载入") Image:nil Frame:CGRectMake(0,0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png"  TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    UIButton *viewWebBtn = [self actionBtn:NSLocalizedString(@"view origin web",@"查看原网页") Image:nil Frame:CGRectMake(0,0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png"  TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
+    UIButton *returnErrBtn = [self actionBtn:NSLocalizedString(@"return err",@"错误反馈") Image:nil Frame:CGRectMake(0,0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png"  TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    NSMutableArray *btnArray = [ NSMutableArray arrayWithObjects:reloadBtn,viewWebBtn,returnErrBtn, nil];
+    CustomActionSheet *sheet = [[CustomActionSheet alloc] initWithArray:btnArray CancelBtnTitle:NSLocalizedString(@"cancel", @"取消")];
+    sheet.delegate = self;
+    [sheet setTag:101];
+    [sheet showInView:self.view];
 }
 
 
@@ -78,25 +111,68 @@
             break;
         }
         case 101:{
-            break;
-        }
-        case 102:{
+            [self moreAction:buttonIndex];
             break;
         }
         default:
             break;
     }
 }
+/*****************评价****************/
 -(void)rateAction:(NSInteger) buttonIndex{
-    
+    if (buttonIndex == 0) {
+        [self sina];
+    }
+    if (buttonIndex == 1) {
+        [self qq];
+    }
 }
--(void)shareAction:(NSInteger ) buttonIndex{
-    
+-(void)qq{
+    //登陆qq接口
+    //.........
+    NSLog(@"qq......");
 }
--(void)loveAction:(NSInteger) buttonIndex{
-    
+-(void)sina{
+    //登陆新浪接口
+    //........
+    NSLog(@"sina......");
 }
+/****************更多*******************/
 -(void)moreAction:(NSInteger)buttonIndex{
-    
+    switch (buttonIndex) {
+        case 0:
+        {
+            [self reloadWebView];
+            break;
+        }
+        case 1:{
+            [self viewOriginWeb];
+            break;
+        }
+        case 2:{
+            [self returnErr];
+            break;
+        }
+        default:
+            break;
+    }
 }
+-(void)reloadWebView{
+    //重新载入
+    //....
+    NSLog(@"reloadwebView.....");
+}
+-(void)viewOriginWeb{
+    //查看原始网页
+    //.....
+    NSLog(@"vieworiginweb......");
+}
+-(void)returnErr{
+    //错误返回
+    //.....
+    NSLog(@"returnerr.....");
+}
+
+
+
 @end

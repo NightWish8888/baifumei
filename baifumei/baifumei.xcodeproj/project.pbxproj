@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA5724184E1DCB00BAB564 /* CustomActionSheet.m */; };
+		8CAA572A184F65C700BAB564 /* BroswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA5728184F65C700BAB564 /* BroswerViewController.m */; };
 		8CBCA3E11848DB8700447B78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBCA3E01848DB8700447B78 /* Foundation.framework */; };
 		8CBCA3E31848DB8700447B78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBCA3E21848DB8700447B78 /* CoreGraphics.framework */; };
 		8CBCA3E51848DB8700447B78 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBCA3E41848DB8700447B78 /* UIKit.framework */; };
@@ -109,6 +110,8 @@
 /* Begin PBXFileReference section */
 		8CAA5723184E1DCB00BAB564 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		8CAA5724184E1DCB00BAB564 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
+		8CAA5727184F65C700BAB564 /* BroswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroswerViewController.h; sourceTree = "<group>"; };
+		8CAA5728184F65C700BAB564 /* BroswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroswerViewController.m; sourceTree = "<group>"; };
 		8CBCA3DD1848DB8700447B78 /* baifumei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = baifumei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBCA3E01848DB8700447B78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8CBCA3E21848DB8700447B78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -302,6 +305,15 @@
 			name = CustomActionSheet;
 			sourceTree = "<group>";
 		};
+		8CAA5726184F656A00BAB564 /* BroswerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8CAA5727184F65C700BAB564 /* BroswerViewController.h */,
+				8CAA5728184F65C700BAB564 /* BroswerViewController.m */,
+			);
+			name = BroswerViewController;
+			sourceTree = "<group>";
+		};
 		8CBCA3D41848DB8700447B78 = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +361,7 @@
 		8CBCA3E61848DB8700447B78 /* baifumei */ = {
 			isa = PBXGroup;
 			children = (
+				8CAA5726184F656A00BAB564 /* BroswerViewController */,
 				C2C0A1A1184EF6B500645B92 /* Helper */,
 				C2C0A116184EE8BD00645B92 /* ShareSDK_v2.6.1 */,
 				8CAA5722184E1DA100BAB564 /* CustomActionSheet */,
@@ -684,6 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CAA572A184F65C700BAB564 /* BroswerViewController.m in Sources */,
 				C2C0A1A0184EEB8D00645B92 /* AGViewDelegate.m in Sources */,
 				C2C0A1A4184EF6D300645B92 /* Helper.m in Sources */,
 				8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */,
