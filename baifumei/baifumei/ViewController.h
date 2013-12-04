@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ShareSDK/ShareSDK.h>
 #import "CustomActionSheet.h"
+#import "AppDelegate.h"
+
 @interface ViewController : UIViewController<UIActionSheetDelegate>
+{
+    
+}
 @property (nonatomic,strong) UIButton *menuItem;
 - (IBAction)rate:(UIButton *)sender;
 - (IBAction)share:(UIButton *)sender;
