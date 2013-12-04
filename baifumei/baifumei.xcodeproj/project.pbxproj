@@ -92,6 +92,7 @@
 		C2C0A19B184EE92A00645B92 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A19A184EE92A00645B92 /* libz.1.2.5.dylib */; };
 		C2C0A19D184EE93500645B92 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A19C184EE93500645B92 /* libicucore.dylib */; };
 		C2C0A1A0184EEB8D00645B92 /* AGViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C0A19F184EEB8D00645B92 /* AGViewDelegate.m */; };
+		C2C0A1A4184EF6D300645B92 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C0A1A3184EF6D300645B92 /* Helper.m */; };
 		C2C63F17184D9B5800881E68 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2C63F16184D9B5800881E68 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +205,8 @@
 		C2C0A19C184EE93500645B92 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		C2C0A19E184EEB8D00645B92 /* AGViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGViewDelegate.h; sourceTree = "<group>"; };
 		C2C0A19F184EEB8D00645B92 /* AGViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGViewDelegate.m; sourceTree = "<group>"; };
+		C2C0A1A2184EF6D300645B92 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		C2C0A1A3184EF6D300645B92 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		C2C63F16184D9B5800881E68 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -346,8 +349,7 @@
 		8CBCA3E61848DB8700447B78 /* baifumei */ = {
 			isa = PBXGroup;
 			children = (
-				C2C0A19E184EEB8D00645B92 /* AGViewDelegate.h */,
-				C2C0A19F184EEB8D00645B92 /* AGViewDelegate.m */,
+				C2C0A1A1184EF6B500645B92 /* Helper */,
 				C2C0A116184EE8BD00645B92 /* ShareSDK_v2.6.1 */,
 				8CAA5722184E1DA100BAB564 /* CustomActionSheet */,
 				C2C63F15184D9B3900881E68 /* LocalizedStrings */,
@@ -554,6 +556,17 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		C2C0A1A1184EF6B500645B92 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C2C0A19E184EEB8D00645B92 /* AGViewDelegate.h */,
+				C2C0A19F184EEB8D00645B92 /* AGViewDelegate.m */,
+				C2C0A1A2184EF6D300645B92 /* Helper.h */,
+				C2C0A1A3184EF6D300645B92 /* Helper.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		C2C63F15184D9B3900881E68 /* LocalizedStrings */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,6 +685,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2C0A1A0184EEB8D00645B92 /* AGViewDelegate.m in Sources */,
+				C2C0A1A4184EF6D300645B92 /* Helper.m in Sources */,
 				8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */,
 				8CBCA3FA1848DB8700447B78 /* ViewController.m in Sources */,
 				8CBCA3F11848DB8700447B78 /* AppDelegate.m in Sources */,

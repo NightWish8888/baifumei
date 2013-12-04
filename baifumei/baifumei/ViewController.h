@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ShareSDK/ShareSDK.h>
+
 #import "CustomActionSheet.h"
-#import "AppDelegate.h"
+#import "Helper.h"
 
 @interface ViewController : UIViewController<UIActionSheetDelegate>
 {
