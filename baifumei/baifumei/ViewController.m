@@ -16,7 +16,7 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
 	[self configureNavItem];
@@ -214,5 +214,14 @@
 }
 
 
-
+#pragma mark ---popView delegate
+-(void)popoverControllerDidDismissPopover:(WEPopoverController *)popoverController{
+    
+}
+-(BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)popoverController{
+    return YES;
+}
+-(void)viewWasTouched:(WETouchableView *)view{
+    
+}
 @end
