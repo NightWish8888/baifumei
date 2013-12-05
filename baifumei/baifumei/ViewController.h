@@ -10,8 +10,9 @@
 
 #import "CustomActionSheet.h"
 #import "Helper.h"
+#import "WEPopoverController.h"
 
-@interface ViewController : UIViewController<UIActionSheetDelegate>
+@interface ViewController : UIViewController<UIActionSheetDelegate,WEPopoverControllerDelegate,WETouchableViewDelegate>
 {
     
 }
