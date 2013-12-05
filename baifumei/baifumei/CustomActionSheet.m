@@ -96,7 +96,7 @@
         _customView.alpha = 0.0f;
     }completion:^(BOOL finished) {
         
-    }];
+    }]; 
 }
 -(void)clickAction:(UIControl *)sender{
     NSInteger index = sender.tag;
