@@ -131,6 +131,7 @@
 		8CAA5724184E1DCB00BAB564 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		8CAA5727184F65C700BAB564 /* BroswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroswerViewController.h; sourceTree = "<group>"; };
 		8CAA5728184F65C700BAB564 /* BroswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BroswerViewController.m; sourceTree = "<group>"; };
+		8CAA572E1850BCC800BAB564 /* MacroHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroHeader.h; sourceTree = "<group>"; };
 		8CBCA3DD1848DB8700447B78 /* baifumei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = baifumei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBCA3E01848DB8700447B78 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8CBCA3E21848DB8700447B78 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -357,6 +358,14 @@
 			name = BroswerViewController;
 			sourceTree = "<group>";
 		};
+		8CAA572D1850BC7400BAB564 /* MacroHeader */ = {
+			isa = PBXGroup;
+			children = (
+				8CAA572E1850BCC800BAB564 /* MacroHeader.h */,
+			);
+			name = MacroHeader;
+			sourceTree = "<group>";
+		};
 		8CBCA3D41848DB8700447B78 = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +413,7 @@
 		8CBCA3E61848DB8700447B78 /* baifumei */ = {
 			isa = PBXGroup;
 			children = (
+				8CAA572D1850BC7400BAB564 /* MacroHeader */,
 				C2C0A1F618503C3F00645B92 /* Popover */,
 				8CAA5726184F656A00BAB564 /* BroswerViewController */,
 				C2C0A1A1184EF6B500645B92 /* Helper */,

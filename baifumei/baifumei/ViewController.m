@@ -47,10 +47,10 @@
 -(void)selectMenu:(UIButton *)sender{
     WEPopoverController *pop = [[WEPopoverController alloc] initWithContentViewController:self];
     pop.delegate = self;
-    if ([pop respondsToSelector:@selector(setContainerViewProperties:)]) {
-        [pop setContainerViewProperties:[self improvedContainerViewProperties]];
-    }
-    pop.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
+//    if ([pop respondsToSelector:@selector(setContainerViewProperties:)]) {
+//        [pop setContainerViewProperties:[self improvedContainerViewProperties]];
+//    }
+//    pop.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
     [pop presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp  animated:YES];
 }
 - (WEPopoverContainerViewProperties *)improvedContainerViewProperties {

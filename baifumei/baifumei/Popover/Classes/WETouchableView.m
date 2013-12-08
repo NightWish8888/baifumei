@@ -47,7 +47,12 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	[self.delegate viewWasTouched:self];
+    if (delegate && [delegate respondsToSelector:@selector(viewWasTouched:)]) {
+        [self.delegate viewWasTouched:self];
+    }
+    else{
+        NSLog(@"_______请实现此代理。。。");
+    }
 }
 
 @end
