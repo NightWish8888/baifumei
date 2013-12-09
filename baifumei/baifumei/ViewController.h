@@ -10,11 +10,10 @@
 
 #import "CustomActionSheet.h"
 #import "Helper.h"
-#import "WEPopoverController.h"
-
-@interface ViewController : UIViewController<UIActionSheetDelegate,WEPopoverControllerDelegate,WETouchableViewDelegate>
+#import "KxMenu.h"
+@interface ViewController : UIViewController<UIActionSheetDelegate>
 {
-    
+
 }
 @property (nonatomic,strong) UIButton *menuItem;
 - (IBAction)rate:(UIButton *)sender;

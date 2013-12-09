@@ -42,51 +42,56 @@
     [self.navigationItem setRightBarButtonItem:setItem];
 }
 -(void)setConfigure:(UIButton *)sender{
+    NSArray *menuItems =
+    @[
+      [KxMenuItem menuItem:@"账号管理"
+                     image:[UIImage imageNamed:@"action_icon"]
+                    target:self
+                    action:@selector(login:)],
+      
+      [KxMenuItem menuItem:@"设置"
+                     image:[UIImage imageNamed:@"check_icon"]
+                    target:self
+                    action:@selector(setting:)],
+      ];
     
+    KxMenuItem *first = menuItems[0];
+    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+    first.alignment = NSTextAlignmentCenter;
+    CGRect rect = CGRectMake(sender.frame.origin.x, sender.frame.origin.y+20, sender.frame.size.width, sender.frame.size.height);
+    [KxMenu showMenuInView:self.navigationController.view
+                  fromRect:rect
+                 menuItems:menuItems];
 }
 -(void)selectMenu:(UIButton *)sender{
-    WEPopoverController *pop = [[WEPopoverController alloc] initWithContentViewController:self];
-    pop.delegate = self;
-//    if ([pop respondsToSelector:@selector(setContainerViewProperties:)]) {
-//        [pop setContainerViewProperties:[self improvedContainerViewProperties]];
-//    }
-//    pop.passthroughViews = [NSArray arrayWithObject:self.navigationController.navigationBar];
-    [pop presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionUp  animated:YES];
+
+    NSArray *menuItems =
+    @[
+      [KxMenuItem menuItem:@"白富美那点事儿"
+                     image:[UIImage imageNamed:@"action_icon"]
+                    target:self
+                    action:@selector(baifuMeiNaDianShi:)],
+      
+      [KxMenuItem menuItem:@"时尚港湾"
+                     image:[UIImage imageNamed:@"check_icon"]
+                    target:self
+                    action:@selector(shiShangGangwan:)],
+      
+      [KxMenuItem menuItem:@"我喜欢的"
+                     image:[UIImage imageNamed:@"reload"]
+                    target:self
+                    action:@selector(myLove:)],
+      ];
+    
+    KxMenuItem *first = menuItems[0];
+    first.foreColor = [UIColor colorWithRed:47/255.0f green:112/255.0f blue:225/255.0f alpha:1.0];
+    first.alignment = NSTextAlignmentCenter;
+    CGRect rect = CGRectMake(sender.frame.origin.x, sender.frame.origin.y+8, sender.frame.size.width, sender.frame.size.height);
+    [KxMenu showMenuInView:self.navigationController.view
+                  fromRect:rect
+                 menuItems:menuItems];
 }
-- (WEPopoverContainerViewProperties *)improvedContainerViewProperties {
-	
-	WEPopoverContainerViewProperties *props = [WEPopoverContainerViewProperties alloc];
-	NSString *bgImageName = nil;
-	CGFloat bgMargin = 0.0;
-	CGFloat bgCapSize = 0.0;
-	CGFloat contentMargin = 4.0;
-	
-	bgImageName = @"popoverBg.png";
-	
-	// These constants are determined by the popoverBg.png image file and are image dependent
-	bgMargin = 13; // margin width of 13 pixels on all sides popoverBg.png (62 pixels wide - 36 pixel background) / 2 == 26 / 2 == 13
-	bgCapSize = 31; // ImageSize/2  == 62 / 2 == 31 pixels
-	
-	props.leftBgMargin = bgMargin;
-	props.rightBgMargin = bgMargin;
-	props.topBgMargin = bgMargin;
-	props.bottomBgMargin = bgMargin;
-	props.leftBgCapSize = bgCapSize;
-	props.topBgCapSize = bgCapSize;
-	props.bgImageName = bgImageName;
-	props.leftContentMargin = contentMargin;
-	props.rightContentMargin = contentMargin - 1; // Need to shift one pixel for border to look correct
-	props.topContentMargin = contentMargin;
-	props.bottomContentMargin = contentMargin;
-	
-	props.arrowMargin = 4.0;
-	
-	props.upArrowImageName = @"popoverArrowUp.png";
-	props.downArrowImageName = @"popoverArrowDown.png";
-	props.leftArrowImageName = @"popoverArrowLeft.png";
-	props.rightArrowImageName = @"popoverArrowRight.png";
-	return props;
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -158,6 +163,23 @@
             break;
     }
 }
+/*****************下拉菜单*****************/
+-(void)baifuMeiNaDianShi:(UIButton *)sender{
+    
+}
+-(void)shiShangGangwan:(UIButton *)sender{
+    
+}
+-(void)myLove:(UIButton *)sender{
+    
+}
+/*****************设置**********************/
+-(void)login:(UIButton *)sender{
+    
+}
+-(void)setting:(UIButton *)sender{
+    
+}
 /*****************评价****************/
 -(void)rateAction:(NSInteger) buttonIndex{
     if (buttonIndex == 0) {
@@ -215,13 +237,6 @@
 
 
 #pragma mark ---popView delegate
--(void)popoverControllerDidDismissPopover:(WEPopoverController *)popoverController{
-    
-}
--(BOOL)popoverControllerShouldDismissPopover:(WEPopoverController *)popoverController{
-    return YES;
-}
--(void)viewWasTouched:(WETouchableView *)view{
-    
-}
+
+
 @end
