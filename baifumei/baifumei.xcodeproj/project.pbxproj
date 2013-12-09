@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CA2144E1855F5310066E239 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2144D1855F5310066E239 /* SettingViewController.m */; };
+		8CA2145318560DB60066E239 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2145218560DB60066E239 /* ContentView.m */; };
 		8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA5724184E1DCB00BAB564 /* CustomActionSheet.m */; };
 		8CAA572A184F65C700BAB564 /* BroswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA5728184F65C700BAB564 /* BroswerViewController.m */; };
 		8CBCA3E11848DB8700447B78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CBCA3E01848DB8700447B78 /* Foundation.framework */; };
@@ -109,6 +111,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CA2144C1855F5310066E239 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		8CA2144D1855F5310066E239 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		8CA2145118560DB60066E239 /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
+		8CA2145218560DB60066E239 /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
 		8CAA5723184E1DCB00BAB564 /* CustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomActionSheet.h; sourceTree = "<group>"; };
 		8CAA5724184E1DCB00BAB564 /* CustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomActionSheet.m; sourceTree = "<group>"; };
 		8CAA5727184F65C700BAB564 /* BroswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BroswerViewController.h; sourceTree = "<group>"; };
@@ -300,6 +306,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8CA2144B1855F4C50066E239 /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8CA2144C1855F5310066E239 /* SettingViewController.h */,
+				8CA2144D1855F5310066E239 /* SettingViewController.m */,
+			);
+			name = SettingViewController;
+			sourceTree = "<group>";
+		};
+		8CA2145018560D760066E239 /* ContentView  (展示网络数据） */ = {
+			isa = PBXGroup;
+			children = (
+				8CA2145118560DB60066E239 /* ContentView.h */,
+				8CA2145218560DB60066E239 /* ContentView.m */,
+			);
+			name = "ContentView  (展示网络数据）";
+			sourceTree = "<group>";
+		};
 		8CAA5722184E1DA100BAB564 /* CustomActionSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +397,8 @@
 		8CBCA3E61848DB8700447B78 /* baifumei */ = {
 			isa = PBXGroup;
 			children = (
+				8CA2145018560D760066E239 /* ContentView  (展示网络数据） */,
+				8CA2144B1855F4C50066E239 /* SettingViewController */,
 				C2ACBA471855963100F6D336 /* KxMenu */,
 				8CAA572D1850BC7400BAB564 /* MacroHeader */,
 				8CAA5726184F656A00BAB564 /* BroswerViewController */,
@@ -722,9 +748,11 @@
 			files = (
 				8CAA572A184F65C700BAB564 /* BroswerViewController.m in Sources */,
 				C2C0A1A0184EEB8D00645B92 /* AGViewDelegate.m in Sources */,
+				8CA2145318560DB60066E239 /* ContentView.m in Sources */,
 				C2C0A1A4184EF6D300645B92 /* Helper.m in Sources */,
 				8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */,
 				C2ACBA4A1855963100F6D336 /* KxMenu.m in Sources */,
+				8CA2144E1855F5310066E239 /* SettingViewController.m in Sources */,
 				8CBCA3FA1848DB8700447B78 /* ViewController.m in Sources */,
 				8CBCA3F11848DB8700447B78 /* AppDelegate.m in Sources */,
 				8CBCA3ED1848DB8700447B78 /* main.m in Sources */,

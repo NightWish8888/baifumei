@@ -9,3 +9,14 @@
 "reload" = "重新载入";
 "view origin web" = "查看原网页";
 "return err" = "错误反馈";
+
+
+/***********设置**************/
+"night mode" = "夜间模式";
+"app ad" = "精品应用推荐";
+"expansion application" = "把应用推荐给好友";
+"feedback" = "意见反馈";
+"rate" = "给我评分";
+"help" = "使用帮助";
+"about" = "关于";
+"set" = "设置";

@@ -10,5 +10,7 @@
 #define baifumei_MacroHeader_h
 
 #define IOS7  [[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0
+#define kReadMode    @"ReadMode"
+#define kBgColor     [UIColor colorWithRed:235.0f/255 green:235.0f/255 blue:235.0f/255 alpha:1]
 
 #endif

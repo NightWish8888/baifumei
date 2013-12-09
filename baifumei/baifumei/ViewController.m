@@ -19,7 +19,21 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.bgView setBackgroundColor:kBgColor ];
+    [self configureContentView];
 	[self configureNavItem];
+}
+-(void)configureContentView{
+    self.contentView1 = [[ContentView alloc] initWithFrame:self.contentView.bounds];
+    self.contentView2 = [[ContentView alloc] initWithFrame:self.contentView.bounds];
+    
+    [self.contentView1.layer setAnchorPoint:CGPointMake(0.5, 1)];
+    [self.contentView1.layer setAnchorPoint:CGPointMake(0.5, 1)];
+    [self.contentView addSubview:self.contentView1];
+    [self.contentView addSubview:self.contentView2];
+    NSLog(@"the poit:%@",NSStringFromCGPoint(self.contentView1.layer.anchorPoint));
+//    [self.contentView1 setHidden:YES];
+//    [self.contentView2 setHidden:YES];
 }
 -(void)configureNavItem{
     float h = self.navigationController.navigationBar.frame.size.height;
@@ -41,6 +55,7 @@
     UIBarButtonItem *setItem = [[UIBarButtonItem alloc] initWithCustomView:setbtn];
     [self.navigationItem setRightBarButtonItem:setItem];
 }
+
 -(void)setConfigure:(UIButton *)sender{
     NSArray *menuItems =
     @[
@@ -77,7 +92,7 @@
                     target:self
                     action:@selector(shiShangGangwan:)],
       
-      [KxMenuItem menuItem:@"我喜欢的"
+      [KxMenuItem menuItem:@"我喜欢的❤️"
                      image:[UIImage imageNamed:@"reload"]
                     target:self
                     action:@selector(myLove:)],
@@ -146,6 +161,28 @@
     [sheet showInView:self.view];
 }
 
+- (IBAction)nextPage:(UIButton *)sender {
+    if (sender.tag == 1) {
+        sender.tag = 2;
+        [self animationContentView:self.contentView1];
+    }
+    if (sender.tag == 2) {
+        sender.tag = 1;
+        [self animationContentView:self.contentView2];
+    }
+}
+-(void)animationContentView:(ContentView *)view{
+    CGRect rectOld = view.frame;
+    [UIView animateWithDuration:5 animations:^{
+        CGRect rect = view.frame;
+        rect.size = CGSizeMake(0, 0);
+        view.frame = rect;
+        
+    }completion:^(BOOL finished) {
+        view.hidden = YES;
+        view.frame = rectOld;
+    }];
+}
 
 #pragma mark ---UIActionSheet Delegate
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -175,10 +212,12 @@
 }
 /*****************设置**********************/
 -(void)login:(UIButton *)sender{
-    
+    [self rate:nil];
 }
 -(void)setting:(UIButton *)sender{
-    
+    SettingViewController *svc = [[SettingViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:svc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 /*****************评价****************/
 -(void)rateAction:(NSInteger) buttonIndex{
