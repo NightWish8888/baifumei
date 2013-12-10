@@ -16,14 +16,28 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.loadingImgView = [[UIImageView alloc] initWithFrame:CGRectMake((frame.size.width -kloadingImgViewWidth)*0.5, (frame.size.height - kloadingImgViewHeight) * 0.5, kloadingImgViewWidth, kloadingImgViewHeight)];
+        self.loadingImgView = [[UIImageView alloc] initWithFrame:[self imageRect]];
+        [self.loadingImgView setAutoresizingMask:
+         UIViewAutoresizingFlexibleBottomMargin|
+         UIViewAutoresizingFlexibleHeight|
+         UIViewAutoresizingFlexibleLeftMargin|
+         UIViewAutoresizingFlexibleRightMargin|
+         UIViewAutoresizingFlexibleTopMargin|
+         UIViewAutoresizingFlexibleWidth
+         ];
         [self addSubview:self.loadingImgView];
         [self loadingGIF];
         [self setBackgroundColor:kBgColor ];
+       
     }
     return self;
 }
-
+-(CGRect)imageRect{
+    return CGRectMake((self.frame.size.width -kloadingImgViewWidth)*0.5, (self.frame.size.height - kloadingImgViewHeight) * 0.5, kloadingImgViewWidth, kloadingImgViewHeight);
+}
+-(void)resetImageViewFrame{
+    [self.loadingImgView setFrame:[self imageRect]];
+}
 -(void)loadingGIF{
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:1];
     for (int i = 1; i <= 4; i++) {

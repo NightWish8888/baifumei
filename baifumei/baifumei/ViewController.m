@@ -24,16 +24,23 @@
 	[self configureNavItem];
 }
 -(void)configureContentView{
-    self.contentView1 = [[ContentView alloc] initWithFrame:self.contentView.bounds];
-    self.contentView2 = [[ContentView alloc] initWithFrame:self.contentView.bounds];
+    CGRect frame = self.contentView.bounds;
+    self.contentView1 = [[ContentView alloc] initWithFrame:frame];
+    self.contentView2 = [[ContentView alloc] initWithFrame:frame];
+    //设置锚点时，frame 的x，y会根据layer的position值重新调整
+    [self.contentView1.layer setAnchorPoint:CGPointMake(0.5, 1)];
+    [self.contentView2.layer setAnchorPoint:CGPointMake(0.5, 1)];
     
-    [self.contentView1.layer setAnchorPoint:CGPointMake(0.5, 1)];
-    [self.contentView1.layer setAnchorPoint:CGPointMake(0.5, 1)];
+    [self.contentView1 setFrame:frame];
+    [self.contentView2 setFrame:frame];
+    
     [self.contentView addSubview:self.contentView1];
     [self.contentView addSubview:self.contentView2];
-    NSLog(@"the poit:%@",NSStringFromCGPoint(self.contentView1.layer.anchorPoint));
+    
+    
 //    [self.contentView1 setHidden:YES];
 //    [self.contentView2 setHidden:YES];
+    
 }
 -(void)configureNavItem{
     float h = self.navigationController.navigationBar.frame.size.height;
@@ -166,21 +173,21 @@
         sender.tag = 2;
         [self animationContentView:self.contentView1];
     }
-    if (sender.tag == 2) {
+    else{
         sender.tag = 1;
         [self animationContentView:self.contentView2];
     }
 }
 -(void)animationContentView:(ContentView *)view{
-    CGRect rectOld = view.frame;
-    [UIView animateWithDuration:5 animations:^{
-        CGRect rect = view.frame;
+    CGRect rectOld = view.bounds;
+    [UIView animateWithDuration:1 animations:^{
+        CGRect rect = view.bounds;
         rect.size = CGSizeMake(0, 0);
-        view.frame = rect;
-        
+        view.bounds = rect;
     }completion:^(BOOL finished) {
         view.hidden = YES;
-        view.frame = rectOld;
+        view.bounds = rectOld;
+        [view resetImageViewFrame];
     }];
 }
 
