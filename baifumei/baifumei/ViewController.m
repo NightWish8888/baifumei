@@ -5,7 +5,8 @@
 //  Created by Zhu Zhihai on 13-11-29.
 //  Copyright (c) 2013年 Zhu Zhihai. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
+#import <CoreGraphics/CoreGraphics.h>
 #import "ViewController.h"
 #define kbtnWidth       260
 #define kbtnHeight      40
@@ -50,7 +51,8 @@
     [_menuItem setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_menuItem setImage:[UIImage imageNamed:@"标题下拉箭头_收缩.png"] forState:UIControlStateNormal];
     float imgwidth = _menuItem.imageView.image.size.width;
-    float titlewidth = [_menuItem.titleLabel.text sizeWithAttributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:15] forKey:@"UITextAttributeFont"]].width;
+    float titlewidth = [_menuItem.titleLabel.text sizeWithFont:[UIFont systemFontOfSize:18]].width;
+//    float titlewidth = [_menuItem.titleLabel.text sizeWithAttributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:15] forKey:@"UITextAttributeFont"]].width;
     [_menuItem setTitleEdgeInsets:UIEdgeInsetsMake(0, 2*-imgwidth , 0, 0)];
     [_menuItem setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0,3* -titlewidth)];
     [_menuItem addTarget:self action:@selector(selectMenu:) forControlEvents:UIControlEventTouchUpInside];

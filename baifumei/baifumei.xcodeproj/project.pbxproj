@@ -34,7 +34,7 @@
 		C2C0A10B184EE5FF00645B92 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A10A184EE5FF00645B92 /* AssetsLibrary.framework */; };
 		C2C0A10D184EE60700645B92 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A10C184EE60700645B92 /* Security.framework */; };
 		C2C0A10F184EE61300645B92 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A10E184EE61300645B92 /* CoreTelephony.framework */; };
-		C2C0A111184EE61C00645B92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A110184EE61C00645B92 /* QuartzCore.framework */; };
+		C2C0A111184EE61C00645B92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A110184EE61C00645B92 /* QuartzCore.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C2C0A113184EE62400645B92 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A112184EE62400645B92 /* MessageUI.framework */; };
 		C2C0A115184EE63100645B92 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A114184EE63100645B92 /* SystemConfiguration.framework */; };
 		C2C0A160184EE8BE00645B92 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A118184EE8BD00645B92 /* CopyConnection.framework */; };
@@ -228,6 +228,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CBCA3E31848DB8700447B78 /* CoreGraphics.framework in Frameworks */,
 				C2C0A19D184EE93500645B92 /* libicucore.dylib in Frameworks */,
 				C2C0A19B184EE92A00645B92 /* libz.1.2.5.dylib in Frameworks */,
 				C2C0A199184EE91C00645B92 /* libsqlite3.dylib in Frameworks */,
@@ -278,7 +279,6 @@
 				C2C0A195184EE8C000645B92 /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
 				C2C0A103184EE5DA00645B92 /* CoreMotion.framework in Frameworks */,
 				C2C0A161184EE8BE00645B92 /* DouBanConnection.framework in Frameworks */,
-				8CBCA3E31848DB8700447B78 /* CoreGraphics.framework in Frameworks */,
 				C2C0A17C184EE8BF00645B92 /* WeChatConnection.framework in Frameworks */,
 				C2C0A17B184EE8BF00645B92 /* VKontakteConnection.framework in Frameworks */,
 				8CBCA3E51848DB8700447B78 /* UIKit.framework in Frameworks */,
@@ -923,6 +923,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baifumei/baifumei-Prefix.pch";
 				INFOPLIST_FILE = "baifumei/baifumei-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/ShareSDK_v2.6.1/Extend/SinaWeiboSDK",
 					"$(inherited)",
@@ -964,6 +965,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baifumei/baifumei-Prefix.pch";
 				INFOPLIST_FILE = "baifumei/baifumei-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/ShareSDK_v2.6.1/Extend/SinaWeiboSDK",
 					"$(inherited)",
