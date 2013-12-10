@@ -19,6 +19,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    srand(time(NULL));
     [self.bgView setBackgroundColor:kBgColor ];
     [self configureContentView];
 	[self configureNavItem];
@@ -171,14 +172,40 @@
 - (IBAction)nextPage:(UIButton *)sender {
     if (sender.tag == 1) {
         sender.tag = 2;
+        [self.contentView bringSubviewToFront:self.contentView1];
+        self.contentView2.hidden = NO;
         [self animationContentView:self.contentView1];
     }
     else{
         sender.tag = 1;
+        [self.contentView bringSubviewToFront:self.contentView2];
+        self.contentView1.hidden = NO;
         [self animationContentView:self.contentView2];
     }
 }
 -(void)animationContentView:(ContentView *)view{
+    NSInteger i = rand() % 3;
+    switch (i) {
+        case 0:
+        {
+            [self animationScaleType:view];
+            break;
+        }
+        case 1:{
+            [self animationTransitionFlip:view];
+            break;
+        }
+        case 2:{
+            [self animationTransitionCurl:view];
+            break;
+        }
+        default:
+            break;
+    }
+    
+}
+
+-(void)animationScaleType:(ContentView *)view{ //缩放动画
     CGRect rectOld = view.bounds;
     [UIView animateWithDuration:1 animations:^{
         CGRect rect = view.bounds;
@@ -190,7 +217,22 @@
         [view resetImageViewFrame];
     }];
 }
-
+-(void)animationTransitionFlip:(ContentView *)view{ //翻转动画
+    [UIView animateWithDuration:1 animations:^
+     {
+         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:view cache:YES];
+     } completion:^(BOOL finished) {
+         view.hidden=YES;
+     }];
+}
+-(void)animationTransitionCurl:(ContentView *)view{ //翻页动画
+    [UIView animateWithDuration:1 animations:^
+     {
+         [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:view cache:YES];
+     } completion:^(BOOL finished) {
+         view.hidden=YES;
+     }];
+}
 #pragma mark ---UIActionSheet Delegate
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     switch (actionSheet.tag) {
