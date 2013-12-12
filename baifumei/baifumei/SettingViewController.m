@@ -34,7 +34,7 @@
     NSArray *section3 = [NSArray arrayWithObject:NSLocalizedString(@"expansion application", @"把应用推荐给好友")];
     NSArray *section4 = [NSArray arrayWithObjects:NSLocalizedString(@"feedback", @"意见反馈"),NSLocalizedString(@"rate",@"给我评分"),NSLocalizedString(@"help",@"使用帮助"),NSLocalizedString(@"about",@"关于"), nil];
     self.summaryArray = [NSArray arrayWithObjects:section1,section2,section3,section4, nil];
-    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,6 +95,10 @@
         default:
             break;
     }
+    cell.layer.borderWidth = 0.4f;
+    cell.layer.borderColor = [[UIColor grayColor] CGColor];
+//    cell.layer.masksToBounds = YES;
+//    cell.layer.cornerRadius = 8.0f;
     return cell;
 }
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -106,6 +110,7 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSInteger section = indexPath.section;
     switch (section) {
         case 1:{

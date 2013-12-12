@@ -54,7 +54,7 @@
     float titlewidth = [_menuItem.titleLabel.text sizeWithFont:[UIFont systemFontOfSize:18]].width;
 //    float titlewidth = [_menuItem.titleLabel.text sizeWithAttributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:15] forKey:@"UITextAttributeFont"]].width;
     [_menuItem setTitleEdgeInsets:UIEdgeInsetsMake(0, 2*-imgwidth , 0, 0)];
-    [_menuItem setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0,3* -titlewidth)];
+    [_menuItem setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0,2* -titlewidth)];
     [_menuItem addTarget:self action:@selector(selectMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setTitleView:_menuItem];
 
@@ -266,7 +266,7 @@
     [self rate:nil];
 }
 -(void)setting:(UIButton *)sender{
-    SettingViewController *svc = [[SettingViewController alloc] init];
+    SettingViewController *svc = [[SettingViewController alloc] initWithStyle:UITableViewStyleGrouped];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:svc];
     [self presentViewController:nav animated:YES completion:nil];
 }
