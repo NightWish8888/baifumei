@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface SettingViewController : UITableViewController
 @property (nonatomic,strong) NSArray *summaryArray;

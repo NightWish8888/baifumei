@@ -8,6 +8,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "ViewController.h"
+#import "BroswerViewController.h"
 #define kbtnWidth       260
 #define kbtnHeight      40
 
@@ -152,7 +153,7 @@
 
 - (IBAction)share:(UIButton *)sender {
     [Helper menuShare];
-}
+    }
 
 - (IBAction)love:(id)sender {
 }
@@ -286,8 +287,112 @@
 }
 -(void)sina{
     //登陆新浪接口
-    //........
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
+    [ShareSDK followUserWithType:ShareTypeSinaWeibo
+                           field:@"ShareSDK"
+                       fieldType:SSUserFieldTypeName
+                     authOptions:authOptions
+                    viewDelegate:_appDelegate.viewDelegate
+                          result:^(SSResponseState state, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                              
+//                              NSString *msg = nil;
+//                              if (state == SSResponseStateSuccess)
+//                              {
+//                                  msg = @"关注成功";
+//                              }
+//                              else if (state == SSResponseStateFail)
+//                              {
+//                                  msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+//                              }
+//                              
+//                              if (msg)
+//                              {
+//                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+//                                                                                      message:msg
+//                                                                                     delegate:nil
+//                                                                            cancelButtonTitle:@"知道了"
+//                                                                            otherButtonTitles:nil];
+//                                  [alertView show];
+//                                  [alertView release];
+//                              }
+                          }];
     NSLog(@"sina......");
+}
+
+/**
+ *	@brief	分享到新浪微博
+ *
+ *	@param 	sender 	事件对象
+ */
+- (void)shareToSinaWeiboClickHandler:(UIButton *)sender
+{
+    //创建分享内容
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:IMAGE_NAME ofType:IMAGE_EXT];
+    id<ISSContent> publishContent = [ShareSDK content:CONTENT
+                                       defaultContent:@""
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:nil
+                                                  url:nil
+                                          description:nil
+                                            mediaType:SSPublishContentMediaTypeText];
+    
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                         allowCallback:YES
+                                                         authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                          viewDelegate:nil
+                                               authManagerViewDelegate:_appDelegate.viewDelegate];
+    //在授权页面中添加关注官方微博
+    [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                    SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                    nil]];
+    
+    //显示分享菜单
+    [ShareSDK showShareViewWithType:ShareTypeSinaWeibo
+                          container:container
+                            content:publishContent
+                      statusBarTips:YES
+                        authOptions:authOptions
+                       shareOptions:[ShareSDK defaultShareOptionsWithTitle:nil
+                                                           oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                            qqButtonHidden:NO
+                                                     wxSessionButtonHidden:NO
+                                                    wxTimelineButtonHidden:NO
+                                                      showKeyboardOnAppear:NO
+                                                         shareViewDelegate:_appDelegate.viewDelegate
+                                                       friendsViewDelegate:_appDelegate.viewDelegate
+                                                     picViewerViewDelegate:nil]
+                             result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                 
+                                 if (state == SSPublishContentStateSuccess)
+                                 {
+                                     NSLog(@"发表成功");
+                                 }
+                                 else if (state == SSPublishContentStateFail)
+                                 {
+                                     NSLog(@"发布失败!error code == %d, error code == %@", [error errorCode], [error errorDescription]);
+                                 }
+                             }];
+
 }
 /****************更多*******************/
 -(void)moreAction:(NSInteger)buttonIndex{
@@ -316,7 +421,9 @@
 }
 -(void)viewOriginWeb{
     //查看原始网页
-    //.....
+    BroswerViewController *broswerPage = [[BroswerViewController alloc] initWithUrl:@"http://www.baidu.com"];
+    UINavigationController *navgation = [[UINavigationController alloc] initWithRootViewController:broswerPage];
+    [self presentViewController:navgation animated:YES completion:nil];
     NSLog(@"vieworiginweb......");
 }
 -(void)returnErr{

@@ -13,9 +13,10 @@
 #import "KxMenu.h"
 #import "SettingViewController.h"
 #import "ContentView.h"
+@class AppDelegate;
 @interface ViewController : UIViewController<UIActionSheetDelegate>
 {
-
+    AppDelegate *_appDelegate;
 }
 @property (nonatomic,strong) UIButton *menuItem;
 @property (nonatomic,strong) ContentView *contentView1;
