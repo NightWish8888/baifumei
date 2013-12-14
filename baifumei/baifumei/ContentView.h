@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContentView : UIView
+@interface ContentView : UIView{
+    
+}
 @property (strong, nonatomic)UIImageView *loadingImgView;
 -(void)resetImageViewFrame;
 @end

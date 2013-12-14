@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 #import "CustomActionSheet.h"
 #import "Helper.h"
 #import "KxMenu.h"
 #import "SettingViewController.h"
 #import "ContentView.h"
+#import "BroswerViewController.h"
+#import "ComUnit.h"
 @class AppDelegate;
 @interface ViewController : UIViewController<UIActionSheetDelegate>
 {

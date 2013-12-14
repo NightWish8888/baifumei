@@ -220,6 +220,9 @@
 		8CBCA40D1848DB8700447B78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8CBCA40B1848DB8700447B78 /* InfoPlist.strings */; };
 		8CBCA40F1848DB8700447B78 /* baifumeiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CBCA40E1848DB8700447B78 /* baifumeiTests.m */; };
 		8CBCA41A1848EADF00447B78 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CBCA4181848EADF00447B78 /* Main_iPhone.storyboard */; };
+		8CCDF3AC185C2860001DA03E /* ComUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCDF3AB185C2860001DA03E /* ComUnit.m */; };
+		8CCDF3B1185C8922001DA03E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCDF3B0185C8922001DA03E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8CCDF3B3185C8984001DA03E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCDF3B2185C8984001DA03E /* libxml2.dylib */; };
 		C2ACBA4A1855963100F6D336 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ACBA491855963100F6D336 /* KxMenu.m */; };
 		C2C0A103184EE5DA00645B92 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A102184EE5DA00645B92 /* CoreMotion.framework */; };
 		C2C0A105184EE5E300645B92 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A104184EE5E300645B92 /* CoreLocation.framework */; };
@@ -528,6 +531,11 @@
 		8CBCA40C1848DB8700447B78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8CBCA40E1848DB8700447B78 /* baifumeiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = baifumeiTests.m; sourceTree = "<group>"; };
 		8CBCA4191848EADF00447B78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		8CCDF3AA185C2860001DA03E /* ComUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComUnit.h; sourceTree = "<group>"; };
+		8CCDF3AB185C2860001DA03E /* ComUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComUnit.m; sourceTree = "<group>"; };
+		8CCDF3AF185C8922001DA03E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		8CCDF3B0185C8922001DA03E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		8CCDF3B2185C8984001DA03E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		C2ACBA481855963100F6D336 /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
 		C2ACBA491855963100F6D336 /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
 		C2C0A102184EE5DA00645B92 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -616,6 +624,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CCDF3B3185C8984001DA03E /* libxml2.dylib in Frameworks */,
 				8CBCA3E31848DB8700447B78 /* CoreGraphics.framework in Frameworks */,
 				C2C0A19D184EE93500645B92 /* libicucore.dylib in Frameworks */,
 				C2C0A19B184EE92A00645B92 /* libz.1.2.5.dylib in Frameworks */,
@@ -708,6 +717,8 @@
 			children = (
 				8CA2145118560DB60066E239 /* ContentView.h */,
 				8CA2145218560DB60066E239 /* ContentView.m */,
+				8CCDF3AA185C2860001DA03E /* ComUnit.h */,
+				8CCDF3AB185C2860001DA03E /* ComUnit.m */,
 			);
 			name = "ContentView  (展示网络数据）";
 			sourceTree = "<group>";
@@ -961,6 +972,7 @@
 		8CBCA3DF1848DB8700447B78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8CCDF3B2185C8984001DA03E /* libxml2.dylib */,
 				C2C0A19C184EE93500645B92 /* libicucore.dylib */,
 				C2C0A19A184EE92A00645B92 /* libz.1.2.5.dylib */,
 				C2C0A198184EE91C00645B92 /* libsqlite3.dylib */,
@@ -986,6 +998,7 @@
 		8CBCA3E61848DB8700447B78 /* baifumei */ = {
 			isa = PBXGroup;
 			children = (
+				8CCDF3AE185C890D001DA03E /* JSON Kit */,
 				8CA214541858A9CA0066E239 /* resource */,
 				8CA2145018560D760066E239 /* ContentView  (展示网络数据） */,
 				8CA2144B1855F4C50066E239 /* SettingViewController */,
@@ -1035,6 +1048,15 @@
 				8CBCA40B1848DB8700447B78 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8CCDF3AE185C890D001DA03E /* JSON Kit */ = {
+			isa = PBXGroup;
+			children = (
+				8CCDF3AF185C8922001DA03E /* JSONKit.h */,
+				8CCDF3B0185C8922001DA03E /* JSONKit.m */,
+			);
+			name = "JSON Kit";
 			sourceTree = "<group>";
 		};
 		C2ACBA471855963100F6D336 /* KxMenu */ = {
@@ -1532,6 +1554,7 @@
 			files = (
 				8CAA572A184F65C700BAB564 /* BroswerViewController.m in Sources */,
 				C2C0A1A0184EEB8D00645B92 /* AGViewDelegate.m in Sources */,
+				8CCDF3B1185C8922001DA03E /* JSONKit.m in Sources */,
 				8CA2145318560DB60066E239 /* ContentView.m in Sources */,
 				C2C0A1A4184EF6D300645B92 /* Helper.m in Sources */,
 				8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */,
@@ -1540,6 +1563,7 @@
 				8CBCA3FA1848DB8700447B78 /* ViewController.m in Sources */,
 				8CBCA3F11848DB8700447B78 /* AppDelegate.m in Sources */,
 				8CBCA3ED1848DB8700447B78 /* main.m in Sources */,
+				8CCDF3AC185C2860001DA03E /* ComUnit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1683,6 +1707,7 @@
 		8CBCA4131848DB8700447B78 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: bing ni (856NC85S83)";
@@ -1718,7 +1743,9 @@
 					/Users/mayingzhi/Documents/Dev/BFM/baifumei/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
 					/Users/mayingzhi/Documents/Dev/BFM/baifumei/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
 					/Users/mayingzhi/Documents/Dev/BFM/baifumei/ShareSDK_v2.6.1/Extend/WeChatSDK,
+					"-lxml2",
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8731ECAD-C026-445D-81D3-44A6E3A24A13";
 				WRAPPER_EXTENSION = app;
@@ -1728,6 +1755,7 @@
 		8CBCA4141848DB8700447B78 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: bing ni (856NC85S83)";
@@ -1763,7 +1791,9 @@
 					/Users/mayingzhi/Documents/Dev/BFM/baifumei/ShareSDK_v2.6.1/Extend/SinaWeiboSDK,
 					/Users/mayingzhi/Documents/Dev/BFM/baifumei/ShareSDK_v2.6.1/Extend/TencentWeiboSDK,
 					/Users/mayingzhi/Documents/Dev/BFM/baifumei/ShareSDK_v2.6.1/Extend/WeChatSDK,
+					"-lxml2",
 				);
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8731ECAD-C026-445D-81D3-44A6E3A24A13";
 				WRAPPER_EXTENSION = app;

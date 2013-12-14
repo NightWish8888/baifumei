@@ -5,10 +5,9 @@
 //  Created by Zhu Zhihai on 13-11-29.
 //  Copyright (c) 2013年 Zhu Zhihai. All rights reserved.
 //
-#import <QuartzCore/QuartzCore.h>
-#import <CoreGraphics/CoreGraphics.h>
+
 #import "ViewController.h"
-#import "BroswerViewController.h"
+
 #define kbtnWidth       260
 #define kbtnHeight      40
 
@@ -173,6 +172,11 @@
 }
 
 - (IBAction)nextPage:(UIButton *)sender {
+    
+    ComUnit *com = [[ComUnit alloc] init];
+    [com getInfo];
+    
+    
     if (sender.tag == 1) {
         sender.tag = 2;
         [self.contentView bringSubviewToFront:self.contentView1];
