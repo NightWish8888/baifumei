@@ -16,7 +16,6 @@
 #import "SettingViewController.h"
 #import "ContentView.h"
 #import "BroswerViewController.h"
-#import "ComUnit.h"
 @class AppDelegate;
 @interface ViewController : UIViewController<UIActionSheetDelegate>
 {

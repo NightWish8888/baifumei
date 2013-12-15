@@ -8,16 +8,26 @@
 
 #import "ComUnit.h"
 #import "JSONKit.h"
+#import "NSString+StringRegular.h"
 
 @implementation ComUnit
--(void)getInfo{
-    if (!_summaryData) {
-        self.summaryData = [NSMutableData dataWithCapacity:1];
++(ComUnit *)shareInstance{
+    static ComUnit *instace;
+    if (!instace) {
+        instace = [[ComUnit alloc] init];
     }
-    [self.summaryData setData:nil];
+    return instace;
+}
++(void)getInfo:(id<ComUnitDelegate>)delegate {  
+    if (![[ComUnit shareInstance] summaryData]) {
+        [[ComUnit shareInstance] setSummaryData: [NSMutableData dataWithCapacity:1]];
+    }
+    [[[ComUnit shareInstance] summaryData] setData:nil];
+    [[ComUnit shareInstance] setDelegate:delegate];
     NSURL *url = [NSURL URLWithString:ServerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    [NSURLConnection connectionWithRequest:request delegate:[ComUnit shareInstance]];
+    
 }
 
 
@@ -104,12 +114,81 @@
     [self.summaryData appendData:data];
 }
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSMutableDictionary *ownDict = [[NSMutableDictionary alloc] init];
+    
     //parase
     NSDictionary *dic = [self.summaryData objectFromJSONData];
-    NSArray *pageDic = [dic objectForKey:kPage];
-    NSString *content = [pageDic objectAtIndex:0];
     
-    NSLog(@"the dic:%@",content);
+    NSLog(@"the dic:\n%@\n",dic);
+    NSArray *pageArr = [dic objectForKey:kPage];
+    NSDictionary *contentDic = [pageArr objectAtIndex:0];
+    NSString *title = [contentDic objectForKey:kTitle];
+    if (title) {
+        [ownDict setObject:title forKey:kTitle];
+    }
+    
+    NSString *name = [contentDic objectForKey:kSource_name];
+    if (name) {
+        [ownDict setObject:name forKey:kSource_name];
+    }
+    
+    NSString *weiboUrl = [contentDic objectForKey:kWeiBo_url];
+    if (weiboUrl) {
+        [ownDict setObject:weiboUrl forKey:kWeiBo_url];
+    }
+    
+    NSString *pubTime = [contentDic objectForKey:kPub_time];
+    if (pubTime) {
+        [ownDict setObject:pubTime forKey:kPub_time];
+    }
+    
+    NSString *content = [contentDic objectForKey:kContent];
+    NSMutableArray *array = [content substringByRegular:@"(<img style=.*? />)"];
+    NSMutableArray *srcArray = [[NSMutableArray alloc] init];
+    
+    [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *stringObj = obj;
+        NSMutableArray *tmpArray = [stringObj substringByRegular:@"http://.*?\""];
+        if (tmpArray.count > 0) {
+            NSString *tmpString = [[tmpArray objectAtIndex:0] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+            [srcArray addObject: tmpString];
+        }
+    }];
+    
+    if (srcArray.count > 0) {
+        NSString *userIcon = [srcArray objectAtIndex:0];
+        [ownDict setObject:userIcon  forKey:kUser_ico];
+        [srcArray removeObjectAtIndex:0];
+    }
+    
+    [ownDict setObject:srcArray forKey:kContent_Img];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(comUnitCompleteWith:)]) {
+        [_delegate comUnitCompleteWith:ownDict];
+    }
+
+   
+    
+    
+//    [contentDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+//        NSLog(@"the key:%@\nthe obj:%@",key,obj);
+//        if ([obj isKindOfClass:[NSString class]]) {
+//            NSMutableArray *array = [obj substringByRegular:@"(<img style=.*? />)"];
+//            [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//                NSLog(@"_____:%@",obj);
+//            }];
+//        }
+    
+        
+        
+//    }];
+    
+    
+    
+    
+//      NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"" options:NSRegularExpressionCaseInsensitive error:nil];
+//    [regex enumerateMatchesInString:(NSString *) options:<#(NSMatchingOptions)#> range:<#(NSRange)#> usingBlock:<#^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop)block#>]
+
 }
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     NSLog(@"parase the data err...");

@@ -173,8 +173,7 @@
 
 - (IBAction)nextPage:(UIButton *)sender {
     
-    ComUnit *com = [[ComUnit alloc] init];
-    [com getInfo];
+    
     
     
     if (sender.tag == 1) {
@@ -182,12 +181,14 @@
         [self.contentView bringSubviewToFront:self.contentView1];
         self.contentView2.hidden = NO;
         [self animationContentView:self.contentView1];
+        [ComUnit getInfo:self.contentView2];
     }
     else{
         sender.tag = 1;
         [self.contentView bringSubviewToFront:self.contentView2];
         self.contentView1.hidden = NO;
         [self animationContentView:self.contentView2];
+        [ComUnit getInfo:self.contentView1];
     }
 }
 -(void)animationContentView:(ContentView *)view{
@@ -438,6 +439,7 @@
 
 
 #pragma mark ---popView delegate
+
 
 
 @end

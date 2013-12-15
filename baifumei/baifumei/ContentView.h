@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ContentView : UIView{
+#import "ComUnit.h"
+#import "HeaderView.h"
+@interface ContentView : UIView<ComUnitDelegate>{
     
 }
 @property (strong, nonatomic)UIImageView *loadingImgView;
+@property (strong, nonatomic) UIScrollView *scrollView;
 -(void)resetImageViewFrame;
 @end

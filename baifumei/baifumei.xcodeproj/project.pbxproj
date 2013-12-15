@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C14DC25185DD0390097F5B7 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C14DC24185DD0390097F5B7 /* HeaderView.m */; };
 		8CA2144E1855F5310066E239 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2144D1855F5310066E239 /* SettingViewController.m */; };
 		8CA2145318560DB60066E239 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2145218560DB60066E239 /* ContentView.m */; };
 		8CA215171858A9CB0066E239 /* bottom-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CA214551858A9CA0066E239 /* bottom-bar.png */; };
@@ -223,6 +224,7 @@
 		8CCDF3AC185C2860001DA03E /* ComUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCDF3AB185C2860001DA03E /* ComUnit.m */; };
 		8CCDF3B1185C8922001DA03E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCDF3B0185C8922001DA03E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8CCDF3B3185C8984001DA03E /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCDF3B2185C8984001DA03E /* libxml2.dylib */; };
+		8CCDF3B6185D591D001DA03E /* NSString+StringRegular.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CCDF3B5185D591D001DA03E /* NSString+StringRegular.m */; };
 		C2ACBA4A1855963100F6D336 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ACBA491855963100F6D336 /* KxMenu.m */; };
 		C2C0A103184EE5DA00645B92 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A102184EE5DA00645B92 /* CoreMotion.framework */; };
 		C2C0A105184EE5E300645B92 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C0A104184EE5E300645B92 /* CoreLocation.framework */; };
@@ -308,6 +310,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C14DC23185DD0390097F5B7 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		8C14DC24185DD0390097F5B7 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		8CA2144C1855F5310066E239 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		8CA2144D1855F5310066E239 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		8CA2145118560DB60066E239 /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
@@ -536,6 +540,8 @@
 		8CCDF3AF185C8922001DA03E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		8CCDF3B0185C8922001DA03E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		8CCDF3B2185C8984001DA03E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		8CCDF3B4185D591D001DA03E /* NSString+StringRegular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringRegular.h"; sourceTree = "<group>"; };
+		8CCDF3B5185D591D001DA03E /* NSString+StringRegular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringRegular.m"; sourceTree = "<group>"; };
 		C2ACBA481855963100F6D336 /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
 		C2ACBA491855963100F6D336 /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
 		C2C0A102184EE5DA00645B92 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -719,6 +725,8 @@
 				8CA2145218560DB60066E239 /* ContentView.m */,
 				8CCDF3AA185C2860001DA03E /* ComUnit.h */,
 				8CCDF3AB185C2860001DA03E /* ComUnit.m */,
+				8C14DC23185DD0390097F5B7 /* HeaderView.h */,
+				8C14DC24185DD0390097F5B7 /* HeaderView.m */,
 			);
 			name = "ContentView  (展示网络数据）";
 			sourceTree = "<group>";
@@ -998,6 +1006,7 @@
 		8CBCA3E61848DB8700447B78 /* baifumei */ = {
 			isa = PBXGroup;
 			children = (
+				8CCDF3B7185D592C001DA03E /* NSString+StringRegular */,
 				8CCDF3AE185C890D001DA03E /* JSON Kit */,
 				8CA214541858A9CA0066E239 /* resource */,
 				8CA2145018560D760066E239 /* ContentView  (展示网络数据） */,
@@ -1057,6 +1066,16 @@
 				8CCDF3B0185C8922001DA03E /* JSONKit.m */,
 			);
 			name = "JSON Kit";
+			sourceTree = "<group>";
+		};
+		8CCDF3B7185D592C001DA03E /* NSString+StringRegular */ = {
+			isa = PBXGroup;
+			children = (
+				8CCDF3B4185D591D001DA03E /* NSString+StringRegular.h */,
+				8CCDF3B5185D591D001DA03E /* NSString+StringRegular.m */,
+			);
+			name = "NSString+StringRegular";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		C2ACBA471855963100F6D336 /* KxMenu */ = {
@@ -1556,8 +1575,10 @@
 				C2C0A1A0184EEB8D00645B92 /* AGViewDelegate.m in Sources */,
 				8CCDF3B1185C8922001DA03E /* JSONKit.m in Sources */,
 				8CA2145318560DB60066E239 /* ContentView.m in Sources */,
+				8CCDF3B6185D591D001DA03E /* NSString+StringRegular.m in Sources */,
 				C2C0A1A4184EF6D300645B92 /* Helper.m in Sources */,
 				8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */,
+				8C14DC25185DD0390097F5B7 /* HeaderView.m in Sources */,
 				C2ACBA4A1855963100F6D336 /* KxMenu.m in Sources */,
 				8CA2144E1855F5310066E239 /* SettingViewController.m in Sources */,
 				8CBCA3FA1848DB8700447B78 /* ViewController.m in Sources */,
