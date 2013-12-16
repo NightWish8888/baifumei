@@ -32,15 +32,17 @@
         float height = frame.size.height;
         float width = frame.size.width;
         _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPadding, (height - kImgH) *.5, kImgW, kImgH)];
-        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(_iconImageView.frame.origin.x + kPadding, (height - kLNH) *.5, kLNW, kLNH)];
+        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(_iconImageView.frame.origin.x + kPadding + kImgW, (height - kLNH) *.5, kLNW, kLNH)];
         _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake((width - KLDW) - 5, (height - kLDH) *.5, KLDW, kLDH)];
+        [_dateLabel setTextAlignment:NSTextAlignmentRight];
         [self addSubview:_iconImageView];
         [self addSubview:_nameLabel];
         [self addSubview:_dateLabel];
         
         dispatch_queue_t queue = dispatch_queue_create("queue", NULL);
         dispatch_async(queue, ^{
-            UIImage *img = [UIImage imageWithContentsOfFile:imgUrl];
+            NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imgUrl]];
+            UIImage *img = [UIImage imageWithData:imgData];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.iconImageView setImage:img];
             });
@@ -52,6 +54,9 @@
         [self.dateLabel setText:dateStr];
         [self.dateLabel setTextColor:[UIColor grayColor]];
         [self.dateLabel setFont:[UIFont systemFontOfSize:10]];
+        
+        self.layer.borderColor = [[UIColor grayColor] CGColor];
+        self.layer.borderWidth = 1.0f;
     }
     return self;
 }

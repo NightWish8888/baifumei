@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <QuartzCore/QuartzCore.h>
 @interface HeaderView : UIView
 @property (nonatomic,strong) UIImageView *iconImageView;
 @property (nonatomic,strong) UILabel *nameLabel;
