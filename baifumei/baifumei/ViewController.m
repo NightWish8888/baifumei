@@ -20,6 +20,11 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    if (IOS7) {
+        self.edgesForExtendedLayout =UIRectEdgeNone;
+        self.extendedLayoutIncludesOpaqueBars = YES;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     srand(time(NULL));
     [self.bgView setBackgroundColor:kBgColor ];
     [self configureContentView];
@@ -172,10 +177,6 @@
 }
 
 - (IBAction)nextPage:(UIButton *)sender {
-    
-    
-    
-    
     if (sender.tag == 1) {
         sender.tag = 2;
         [self.contentView bringSubviewToFront:self.contentView1];

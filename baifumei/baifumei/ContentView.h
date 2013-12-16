@@ -14,5 +14,6 @@
 }
 @property (strong, nonatomic)UIImageView *loadingImgView;
 @property (strong, nonatomic) UIScrollView *scrollView;
+
 -(void)resetImageViewFrame;
 @end

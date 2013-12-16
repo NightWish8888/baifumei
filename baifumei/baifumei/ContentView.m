@@ -32,7 +32,7 @@
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
         [self.scrollView setContentSize:CGSizeMake(self.bounds.size.width, 480)];
         [self addSubview:self.scrollView];
-//        [self.scrollView setHidden:YES];
+        [self.scrollView setHidden:YES];
     }
     return self;
 }
@@ -56,16 +56,19 @@
 //在接受完毕网络数据时，此处设置view为一个淡入的效果
 #pragma mark --- ComUnitDelegate
 -(void)comUnitCompleteWith:(NSMutableDictionary *)dicInfo{
-
-    [dicInfo enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        if ([obj isKindOfClass: [NSMutableArray class]]) {
+//    [dicInfo enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+//        if ([obj isKindOfClass: [NSMutableArray class]]) {
 //            NSMutableArray *a = obj;
 //            [a enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 //                NSLog(@"-----%@",obj);
 //            }];
-                    }
-        else
-            NSLog(@"-----%@",obj);
+//                    }
+//        else
+//            NSLog(@"-----%@",obj);
+//    }];
+    [[self.scrollView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        UIView *v = obj;
+        [v removeFromSuperview];
     }];
     NSString *name = [dicInfo valueForKey:kSource_name];
     NSString *icon = [dicInfo valueForKey:kUser_ico];
@@ -73,7 +76,7 @@
     HeaderView *headView = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 60) Name:name ImageUrl:icon Date:date];
     
     [self.scrollView addSubview:headView];
-//    [self.scrollView setHidden:NO];
+    [self.scrollView setHidden:NO];
 //    [self animationFadeIn];
 }
 -(void)animationFadeIn{
