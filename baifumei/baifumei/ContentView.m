@@ -75,10 +75,9 @@
     NSString *name = [dicInfo valueForKey:kSource_name];
     NSString *icon = [dicInfo valueForKey:kUser_ico];
     NSString *date = [dicInfo valueForKey:kPub_time];
-    HeaderView *headView = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 50) Name:name ImageUrl:icon Date:date];
+    HeaderView *headView = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 44) Name:name ImageUrl:icon Date:date];
     
     [self.scrollView addSubview:headView];
-    [self.scrollView setHidden:NO];
     [self.loadingImgView setHidden:YES];
     [self animationFadeIn];
 }

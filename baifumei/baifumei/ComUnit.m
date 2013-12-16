@@ -117,28 +117,31 @@
     NSMutableDictionary *ownDict = [[NSMutableDictionary alloc] init];
     
     //parase
+    BOOL valid = NO;
     NSDictionary *dic = [self.summaryData objectFromJSONData];
-    
-    NSLog(@"the dic:\n%@\n",dic);
     NSArray *pageArr = [dic objectForKey:kPage];
     NSDictionary *contentDic = [pageArr objectAtIndex:0];
     NSString *title = [contentDic objectForKey:kTitle];
     if (title) {
+        valid = YES;
         [ownDict setObject:title forKey:kTitle];
     }
     
     NSString *name = [contentDic objectForKey:kSource_name];
     if (name) {
+        valid = YES;
         [ownDict setObject:name forKey:kSource_name];
     }
     
     NSString *weiboUrl = [contentDic objectForKey:kWeiBo_url];
     if (weiboUrl) {
+        valid = YES;
         [ownDict setObject:weiboUrl forKey:kWeiBo_url];
     }
     
     NSString *pubTime = [contentDic objectForKey:kPub_time];
     if (pubTime) {
+        valid = YES;
         [ownDict setObject:pubTime forKey:kPub_time];
     }
     
@@ -156,6 +159,7 @@
     }];
     
     if (srcArray.count > 0) {
+        valid = YES;
         NSString *userIcon = [srcArray objectAtIndex:0];
         [ownDict setObject:userIcon  forKey:kUser_ico];
         [srcArray removeObjectAtIndex:0];
@@ -163,7 +167,7 @@
     
     [ownDict setObject:srcArray forKey:kContent_Img];
     
-    if (_delegate && [_delegate respondsToSelector:@selector(comUnitCompleteWith:)]) {
+    if (valid && _delegate && [_delegate respondsToSelector:@selector(comUnitCompleteWith:)]) {
         [_delegate comUnitCompleteWith:ownDict];
     }
 

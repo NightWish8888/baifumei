@@ -29,6 +29,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        UIImageView *bgImgaeView = [[UIImageView alloc] initWithFrame:frame];
+        [bgImgaeView setImage:[UIImage imageNamed:@"评论页转发选项背景.png"]];
         float height = frame.size.height;
         float width = frame.size.width;
         _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kPadding, (height - kImgH) *.5, kImgW, kImgH)];
@@ -55,18 +57,9 @@
         [self.dateLabel setTextColor:[UIColor grayColor]];
         [self.dateLabel setFont:[UIFont systemFontOfSize:10]];
         
-        self.layer.borderColor = [[UIColor grayColor] CGColor];
+        self.layer.borderColor = [[UIColor whiteColor] CGColor];
         self.layer.borderWidth = 1.0f;
     }
     return self;
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 @end
