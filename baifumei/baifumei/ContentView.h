@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ComUnit.h"
 #import "HeaderView.h"
+#import "DisplayImgView.h"
 @interface ContentView : UIView<ComUnitDelegate>{
     
 }

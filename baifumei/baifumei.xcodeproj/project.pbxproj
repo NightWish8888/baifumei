@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C14DC25185DD0390097F5B7 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C14DC24185DD0390097F5B7 /* HeaderView.m */; };
+		8C14DC281860A8020097F5B7 /* DisplayImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C14DC271860A8020097F5B7 /* DisplayImgView.m */; };
 		8CA2144E1855F5310066E239 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2144D1855F5310066E239 /* SettingViewController.m */; };
 		8CA2145318560DB60066E239 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2145218560DB60066E239 /* ContentView.m */; };
 		8CA215171858A9CB0066E239 /* bottom-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CA214551858A9CA0066E239 /* bottom-bar.png */; };
@@ -312,6 +313,8 @@
 /* Begin PBXFileReference section */
 		8C14DC23185DD0390097F5B7 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		8C14DC24185DD0390097F5B7 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		8C14DC261860A8020097F5B7 /* DisplayImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayImgView.h; sourceTree = "<group>"; };
+		8C14DC271860A8020097F5B7 /* DisplayImgView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayImgView.m; sourceTree = "<group>"; };
 		8CA2144C1855F5310066E239 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		8CA2144D1855F5310066E239 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		8CA2145118560DB60066E239 /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
@@ -727,6 +730,8 @@
 				8CCDF3AB185C2860001DA03E /* ComUnit.m */,
 				8C14DC23185DD0390097F5B7 /* HeaderView.h */,
 				8C14DC24185DD0390097F5B7 /* HeaderView.m */,
+				8C14DC261860A8020097F5B7 /* DisplayImgView.h */,
+				8C14DC271860A8020097F5B7 /* DisplayImgView.m */,
 			);
 			name = "ContentView  (展示网络数据）";
 			sourceTree = "<group>";
@@ -1571,6 +1576,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C14DC281860A8020097F5B7 /* DisplayImgView.m in Sources */,
 				8CAA572A184F65C700BAB564 /* BroswerViewController.m in Sources */,
 				C2C0A1A0184EEB8D00645B92 /* AGViewDelegate.m in Sources */,
 				8CCDF3B1185C8922001DA03E /* JSONKit.m in Sources */,

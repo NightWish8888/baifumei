@@ -37,10 +37,12 @@
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(_iconImageView.frame.origin.x + kPadding + kImgW, (height - kLNH) *.5, kLNW, kLNH)];
         _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake((width - KLDW) - 5, (height - kLDH) *.5, KLDW, kLDH)];
         [_dateLabel setTextAlignment:NSTextAlignmentRight];
+        UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, frame.size.height - 1, frame.size.width, 1)];
+        [imgView setImage:[UIImage imageNamed:@"评论列表分割线.png"]];
         [self addSubview:_iconImageView];
         [self addSubview:_nameLabel];
         [self addSubview:_dateLabel];
-        
+        [self addSubview:imgView];
         dispatch_queue_t queue = dispatch_queue_create("queue", NULL);
         dispatch_async(queue, ^{
             NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imgUrl]];
@@ -57,8 +59,8 @@
         [self.dateLabel setTextColor:[UIColor grayColor]];
         [self.dateLabel setFont:[UIFont systemFontOfSize:10]];
         
-        self.layer.borderColor = [[UIColor whiteColor] CGColor];
-        self.layer.borderWidth = 1.0f;
+//        self.layer.borderColor = [[UIColor whiteColor] CGColor];
+//        self.layer.borderWidth = 1.0f;
     }
     return self;
 }

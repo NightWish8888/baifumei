@@ -119,6 +119,7 @@
     //parase
     BOOL valid = NO;
     NSDictionary *dic = [self.summaryData objectFromJSONData];
+    NSLog(@"the dic:%@",dic);
     NSArray *pageArr = [dic objectForKey:kPage];
     NSDictionary *contentDic = [pageArr objectAtIndex:0];
     NSString *title = [contentDic objectForKey:kTitle];

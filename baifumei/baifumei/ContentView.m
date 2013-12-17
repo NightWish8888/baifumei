@@ -9,6 +9,8 @@
 #import "ContentView.h"
 #define kloadingImgViewWidth  220
 #define kloadingImgViewHeight 100
+
+#define kHeaderViewHeight    44.0f
 @implementation ContentView
 
 - (id)initWithFrame:(CGRect)frame
@@ -30,7 +32,6 @@
         [self setBackgroundColor:kBgColor ];
         
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        [self.scrollView setContentSize:CGSizeMake(self.bounds.size.width, 480)];
         [self addSubview:self.scrollView];
         [self.scrollView setHidden:YES];
     }
@@ -58,26 +59,39 @@
 //在接受完毕网络数据时，此处设置view为一个淡入的效果
 #pragma mark --- ComUnitDelegate
 -(void)comUnitCompleteWith:(NSMutableDictionary *)dicInfo{
-//    [dicInfo enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-//        if ([obj isKindOfClass: [NSMutableArray class]]) {
-//            NSMutableArray *a = obj;
-//            [a enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//                NSLog(@"-----%@",obj);
-//            }];
-//                    }
-//        else
-//            NSLog(@"-----%@",obj);
-//    }];
+    [dicInfo enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([obj isKindOfClass: [NSMutableArray class]]) {
+            NSMutableArray *a = obj;
+            [a enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                NSLog(@"++++-----%@",obj);
+            }];
+                    }
+        else
+            NSLog(@"the key:%@-----%@",key,obj);
+    }];
+    
     [[self.scrollView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         UIView *v = obj;
         [v removeFromSuperview];
     }];
+    //标题行
     NSString *name = [dicInfo valueForKey:kSource_name];
     NSString *icon = [dicInfo valueForKey:kUser_ico];
     NSString *date = [dicInfo valueForKey:kPub_time];
-    HeaderView *headView = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, 44) Name:name ImageUrl:icon Date:date];
-    
+    NSMutableArray *content_Img = [dicInfo objectForKey:kContent_Img];
+    HeaderView *headView = [[HeaderView alloc] initWithFrame:CGRectMake(0, 0, self.scrollView.bounds.size.width, kHeaderViewHeight) Name:name ImageUrl:icon Date:date];
+    [self.scrollView setContentSize:CGSizeMake(self.bounds.size.width,headView.frame.size.height)];
     [self.scrollView addSubview:headView];
+    
+    
+    //内容
+    NSString *contentStr = [dicInfo objectForKey:kTitle];
+    CGPoint point = CGPointMake(0, headView.frame.origin.y + headView.frame.size.height);
+    DisplayImgView *disImgView = [[DisplayImgView alloc] initWithContentText:contentStr ImgArray:content_Img Position:point Width:self.scrollView.frame.size.width Parent:self.scrollView];
+    NSLog(@"the height:%@",NSStringFromCGRect(disImgView.frame));
+    
+    [self.scrollView addSubview:disImgView];
+    
     [self.loadingImgView setHidden:YES];
     [self animationFadeIn];
 }
