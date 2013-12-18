@@ -70,10 +70,7 @@
             NSLog(@"the key:%@-----%@",key,obj);
     }];
     
-    [[self.scrollView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        UIView *v = obj;
-        [v removeFromSuperview];
-    }];
+    
     //标题行
     NSString *name = [dicInfo valueForKey:kSource_name];
     NSString *icon = [dicInfo valueForKey:kUser_ico];

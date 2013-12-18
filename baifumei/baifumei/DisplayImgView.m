@@ -55,8 +55,9 @@
                     [self setFrame:(CGRect){self.frame.origin,{self.frame.size.width,self.frame.size.height + imgView_H + kImgViewPadding_V}}];
                     [imgView setImage:img];
                     [self addSubview:imgView];
-                    
+                    NSLog(@"__the scrollview size:%@",NSStringFromCGSize(scrollView.contentSize));
                     [scrollView setContentSize:CGSizeMake(scrollView.contentSize.width,scrollView.contentSize.height + imgView_H + kImgViewPadding_V)];
+                    NSLog(@"+++the scrollview size:%@",NSStringFromCGSize(scrollView.contentSize));
 //                    [self layoutSubviews];
                 });
             });
