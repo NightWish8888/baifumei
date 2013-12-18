@@ -89,7 +89,7 @@
     CGPoint point = CGPointMake(0, headView.frame.origin.y + headView.frame.size.height);
     DisplayImgView *disImgView = [[DisplayImgView alloc] initWithContentText:contentStr ImgArray:content_Img Position:point Width:self.scrollView.frame.size.width Parent:self.scrollView];
     NSLog(@"the height:%@",NSStringFromCGRect(disImgView.frame));
-    
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.contentSize.width,self.scrollView.contentSize.height + disImgView.frame.size.height)];
     [self.scrollView addSubview:disImgView];
     
     [self.loadingImgView setHidden:YES];

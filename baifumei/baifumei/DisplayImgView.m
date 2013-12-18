@@ -56,7 +56,7 @@
                     [imgView setImage:img];
                     [self addSubview:imgView];
                     
-                    [scrollView setContentSize:CGSizeMake(self.bounds.size.width,scrollView.contentSize.height + self.frame.size.height)];
+                    [scrollView setContentSize:CGSizeMake(scrollView.contentSize.width,scrollView.contentSize.height + imgView_H + kImgViewPadding_V)];
 //                    [self layoutSubviews];
                 });
             });
