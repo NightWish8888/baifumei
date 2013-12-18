@@ -24,8 +24,15 @@
 #import <Foundation/Foundation.h>
 
 @interface ComUnit : NSObject<NSURLConnectionDataDelegate,NSURLConnectionDelegate>
+{
+    NSInteger currIndex;
+}
+@property (nonatomic,strong) NSMutableArray *contentViewArray;
 @property (nonatomic,strong) NSMutableData *summaryData;
-@property (nonatomic,assign) id<ComUnitDelegate> delegate;
-+(void)getInfo:(id<ComUnitDelegate>)delegate;
+@property (nonatomic,strong) NSMutableArray *ownArray;
 
++(void)getInfo;
++(void)addUpdateContentView:(id<ComUnitDelegate>) delegate;
+-(void)setCurrIndex:(NSInteger)v;
+-(NSInteger)getCurrIndex;
 @end

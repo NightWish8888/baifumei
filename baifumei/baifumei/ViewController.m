@@ -25,10 +25,13 @@
         self.extendedLayoutIncludesOpaqueBars = YES;
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    [ComUnit getInfo];
     srand(time(NULL));
     [self.bgView setBackgroundColor:kBgColor ];
     [self configureContentView];
 	[self configureNavItem];
+    [ComUnit addUpdateContentView:self.contentView1];
+    [ComUnit addUpdateContentView:self.contentView2];
 }
 -(void)configureContentView{
     CGRect frame = self.contentView.bounds;
@@ -182,14 +185,14 @@
         [self.contentView bringSubviewToFront:self.contentView1];
         self.contentView2.hidden = NO;
         [self animationContentView:self.contentView1];
-        [ComUnit getInfo:self.contentView2];
+        [ComUnit addUpdateContentView:self.contentView2];
     }
     else{
         sender.tag = 1;
         [self.contentView bringSubviewToFront:self.contentView2];
         self.contentView1.hidden = NO;
         [self animationContentView:self.contentView2];
-        [ComUnit getInfo:self.contentView1];
+        [ComUnit addUpdateContentView:self.contentView1];
     }
 }
 -(void)animationContentView:(ContentView *)view{
@@ -249,7 +252,7 @@
     [UIView animateWithDuration:1 animations:^
      {
          [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:view cache:YES];
-         view.alpha = 1.0f;
+         view.alpha = 0.0f;
      } completion:^(BOOL finished) {
          view.hidden=YES;
          view.alpha = 1.0f;

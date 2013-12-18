@@ -15,23 +15,50 @@
     static ComUnit *instace;
     if (!instace) {
         instace = [[ComUnit alloc] init];
+        [instace setSummaryData:[NSMutableData dataWithCapacity:1]];
+        [instace setOwnArray:[NSMutableArray arrayWithCapacity:1]];
+        [instace setContentViewArray:[NSMutableArray arrayWithCapacity:1]];
     }
     return instace;
 }
-+(void)getInfo:(id<ComUnitDelegate>)delegate {  
-    if (![[ComUnit shareInstance] summaryData]) {
-        [[ComUnit shareInstance] setSummaryData: [NSMutableData dataWithCapacity:1]];
-    }
+-(NSInteger)getCurrIndex{
+    return currIndex;
+}
+-(void)setCurrIndex:(NSInteger)v{
+    currIndex = v;
+}
++(void)getInfo{
+//    [[ComUnit shareInstance] setCurrIndex:0];
     [[[ComUnit shareInstance] summaryData] setData:nil];
-    [[ComUnit shareInstance] setDelegate:delegate];
     NSURL *url = [NSURL URLWithString:ServerUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [NSURLConnection connectionWithRequest:request delegate:[ComUnit shareInstance]];
-    
+}
++(void)addUpdateContentView:(id<ComUnitDelegate>) delegate{
+    if (![[[ComUnit shareInstance] contentViewArray] containsObject:delegate]) {
+        [[[ComUnit shareInstance] contentViewArray] addObject:delegate];
+    }
+    [[ComUnit shareInstance] updateContentView];
 }
 
-
-
+-(void)updateContentView{
+    NSMutableArray *updatedContetArr = [NSMutableArray arrayWithCapacity:1];
+    [self.contentViewArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if (currIndex < self.ownArray.count) {
+            id<ComUnitDelegate> _delegate = obj;
+            if (_delegate && [_delegate respondsToSelector:@selector(comUnitCompleteWith:)]) {
+                [_delegate comUnitCompleteWith:[self.ownArray objectAtIndex:currIndex]];
+            }
+            [updatedContetArr addObject:_delegate];
+        }
+        if (currIndex == self.ownArray.count - 1) {
+            [ComUnit getInfo];
+            *stop = YES;
+        }
+        currIndex++;
+    }];
+    [self.contentViewArray removeObjectsInArray:updatedContetArr]; 
+}
 
 
 
@@ -114,64 +141,66 @@
     [self.summaryData appendData:data];
 }
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    NSMutableDictionary *ownDict = [[NSMutableDictionary alloc] init];
-    
+    [self setCurrIndex:0];
+    [self.ownArray removeAllObjects];
     //parase
-    BOOL valid = NO;
+    
     NSDictionary *dic = [self.summaryData objectFromJSONData];
     NSLog(@"the dic:%@",dic);
     NSArray *pageArr = [dic objectForKey:kPage];
-    NSDictionary *contentDic = [pageArr objectAtIndex:0];
-    NSString *title = [contentDic objectForKey:kTitle];
-    if (title) {
-        valid = YES;
-        [ownDict setObject:title forKey:kTitle];
-    }
-    
-    NSString *name = [contentDic objectForKey:kSource_name];
-    if (name) {
-        valid = YES;
-        [ownDict setObject:name forKey:kSource_name];
-    }
-    
-    NSString *weiboUrl = [contentDic objectForKey:kWeiBo_url];
-    if (weiboUrl) {
-        valid = YES;
-        [ownDict setObject:weiboUrl forKey:kWeiBo_url];
-    }
-    
-    NSString *pubTime = [contentDic objectForKey:kPub_time];
-    if (pubTime) {
-        valid = YES;
-        [ownDict setObject:pubTime forKey:kPub_time];
-    }
-    
-    NSString *content = [contentDic objectForKey:kContent];
-    NSMutableArray *array = [content substringByRegular:@"(<img style=.*? />)"];
-    NSMutableArray *srcArray = [[NSMutableArray alloc] init];
-    
-    [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSString *stringObj = obj;
-        NSMutableArray *tmpArray = [stringObj substringByRegular:@"http://.*?\""];
-        if (tmpArray.count > 0) {
-            NSString *tmpString = [[tmpArray objectAtIndex:0] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-            [srcArray addObject: tmpString];
+    [pageArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMutableDictionary *_ownDict = [NSMutableDictionary dictionaryWithCapacity:1];
+        NSDictionary *contentDic = obj;
+        BOOL valid = NO;
+        NSString *title = [contentDic objectForKey:kTitle];
+        if (title) {
+            valid = YES;
+            [_ownDict setObject:title forKey:kTitle];
         }
+        
+        NSString *name = [contentDic objectForKey:kSource_name];
+        if (name) {
+            valid = YES;
+            [_ownDict setObject:name forKey:kSource_name];
+        }
+        
+        NSString *weiboUrl = [contentDic objectForKey:kWeiBo_url];
+        if (weiboUrl) {
+            valid = YES;
+            [_ownDict setObject:weiboUrl forKey:kWeiBo_url];
+        }
+        
+        NSString *pubTime = [contentDic objectForKey:kPub_time];
+        if (pubTime) {
+            valid = YES;
+            [_ownDict setObject:pubTime forKey:kPub_time];
+        }
+        
+        NSString *content = [contentDic objectForKey:kContent];
+        NSMutableArray *array = [content substringByRegular:@"(<img style=.*? />)"];
+        NSMutableArray *srcArray = [[NSMutableArray alloc] init];
+        
+        [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSString *stringObj = obj;
+            NSMutableArray *tmpArray = [stringObj substringByRegular:@"http://.*?\""];
+            if (tmpArray.count > 0) {
+                NSString *tmpString = [[tmpArray objectAtIndex:0] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+                [srcArray addObject: tmpString];
+            }
+        }];
+        
+        if (srcArray.count > 0) {
+            valid = YES;
+            NSString *userIcon = [srcArray objectAtIndex:0];
+            [_ownDict setObject:userIcon  forKey:kUser_ico];
+            [srcArray removeObjectAtIndex:0];
+        }
+        
+        [_ownDict setObject:srcArray forKey:kContent_Img];
+        [self.ownArray addObject:_ownDict];
     }];
-    
-    if (srcArray.count > 0) {
-        valid = YES;
-        NSString *userIcon = [srcArray objectAtIndex:0];
-        [ownDict setObject:userIcon  forKey:kUser_ico];
-        [srcArray removeObjectAtIndex:0];
-    }
-    
-    [ownDict setObject:srcArray forKey:kContent_Img];
-    
-    if (valid && _delegate && [_delegate respondsToSelector:@selector(comUnitCompleteWith:)]) {
-        [_delegate comUnitCompleteWith:ownDict];
-    }
 
+    [self updateContentView];
    
     
     

@@ -70,7 +70,7 @@
             NSLog(@"the key:%@-----%@",key,obj);
     }];
     
-    
+    [self contentVeiwRmoveSubViewsOfScrollView];
     //标题行
     NSString *name = [dicInfo valueForKey:kSource_name];
     NSString *icon = [dicInfo valueForKey:kUser_ico];
@@ -80,17 +80,21 @@
     [self.scrollView setContentSize:CGSizeMake(self.bounds.size.width,headView.frame.size.height)];
     [self.scrollView addSubview:headView];
     
-    
     //内容
     NSString *contentStr = [dicInfo objectForKey:kTitle];
     CGPoint point = CGPointMake(0, headView.frame.origin.y + headView.frame.size.height);
     DisplayImgView *disImgView = [[DisplayImgView alloc] initWithContentText:contentStr ImgArray:content_Img Position:point Width:self.scrollView.frame.size.width Parent:self.scrollView];
-    NSLog(@"the height:%@",NSStringFromCGRect(disImgView.frame));
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.contentSize.width,self.scrollView.contentSize.height + disImgView.frame.size.height)];
     [self.scrollView addSubview:disImgView];
-    
+
     [self.loadingImgView setHidden:YES];
     [self animationFadeIn];
+}
+-(void)contentVeiwRmoveSubViewsOfScrollView{
+    [[self.scrollView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        UIView *v = obj;
+        [v removeFromSuperview];
+    }];
 }
 -(void)animationFadeIn{
     [self.scrollView setHidden:NO];

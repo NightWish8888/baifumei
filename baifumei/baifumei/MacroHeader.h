@@ -12,7 +12,7 @@
 #define IOS7  [[[UIDevice currentDevice] systemVersion] doubleValue] >= 7.0
 #define kReadMode    @"ReadMode"
 #define kBgColor     [UIColor colorWithRed:235.0f/255 green:235.0f/255 blue:235.0f/255 alpha:1]
-#define ServerUrl   @"http://api.kufaxian.com/v2_1/pages/category.json?client_key=7707617055&&user_id=7523&&category_id=1018&&max=10"
+#define ServerUrl   @"http://api.kufaxian.com/v2_1/pages/category.json?client_key=7707617055&&user_id=7523&&category_id=1018&&max=60"
 
 
 #define kPage     @"pages"

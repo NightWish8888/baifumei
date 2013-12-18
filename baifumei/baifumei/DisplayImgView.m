@@ -47,18 +47,20 @@
                     
                     float imgView_H = kImgView_W*img.size.height/img.size.width;
                     CGSize imgView_Size = CGSizeMake(kImgView_W, imgView_H);
+                    
                     float x = (width - kImgView_W)*.5;
                     float y = self.frame.size.height;
-                    
                     CGPoint imgView_Point = CGPointMake(x, y);
+                    
                     UIImageView *imgView = [[UIImageView alloc] initWithFrame:(CGRect){imgView_Point,imgView_Size}];
+                    
+                    float oldH = self.frame.size.height;
                     [self setFrame:(CGRect){self.frame.origin,{self.frame.size.width,self.frame.size.height + imgView_H + kImgViewPadding_V}}];
+                    float addH = self.frame.size.height - oldH;
+                    
                     [imgView setImage:img];
                     [self addSubview:imgView];
-                    NSLog(@"__the scrollview size:%@",NSStringFromCGSize(scrollView.contentSize));
-                    [scrollView setContentSize:CGSizeMake(scrollView.contentSize.width,scrollView.contentSize.height + imgView_H + kImgViewPadding_V)];
-                    NSLog(@"+++the scrollview size:%@",NSStringFromCGSize(scrollView.contentSize));
-//                    [self layoutSubviews];
+                    [scrollView setContentSize:CGSizeMake(scrollView.contentSize.width,scrollView.contentSize.height + addH)];
                 });
             });
         }];
