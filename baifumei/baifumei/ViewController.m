@@ -44,6 +44,10 @@
     [self.contentView1 setFrame:frame];
     [self.contentView2 setFrame:frame];
     
+    [self.contentView1 setTag:1];
+    [self.contentView2 setTag:2];
+    
+    
     [self.contentView addSubview:self.contentView1];
     [self.contentView addSubview:self.contentView2];
     
@@ -185,14 +189,14 @@
         [self.contentView bringSubviewToFront:self.contentView1];
         self.contentView2.hidden = NO;
         [self animationContentView:self.contentView1];
-        [ComUnit addUpdateContentView:self.contentView2];
+        [ComUnit addUpdateContentView:self.contentView1];
     }
     else{
         sender.tag = 1;
         [self.contentView bringSubviewToFront:self.contentView2];
         self.contentView1.hidden = NO;
         [self animationContentView:self.contentView2];
-        [ComUnit addUpdateContentView:self.contentView1];
+        [ComUnit addUpdateContentView:self.contentView2];
     }
 }
 -(void)animationContentView:(ContentView *)view{

@@ -43,11 +43,14 @@
 
 -(void)updateContentView{
     NSMutableArray *updatedContetArr = [NSMutableArray arrayWithCapacity:1];
+    NSLog(@"the updatecontentview count:%d",self.contentViewArray.count);
     [self.contentViewArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if (currIndex < self.ownArray.count) {
             id<ComUnitDelegate> _delegate = obj;
             if (_delegate && [_delegate respondsToSelector:@selector(comUnitCompleteWith:)]) {
                 [_delegate comUnitCompleteWith:[self.ownArray objectAtIndex:currIndex]];
+                
+                NSLog(@"请求第%d条数据!!!",currIndex);
             }
             [updatedContetArr addObject:_delegate];
         }
@@ -55,6 +58,7 @@
             [ComUnit getInfo];
             *stop = YES;
         }
+        NSLog(@"the currindex:%d",currIndex);
         currIndex++;
     }];
     [self.contentViewArray removeObjectsInArray:updatedContetArr]; 
@@ -146,7 +150,7 @@
     //parase
     
     NSDictionary *dic = [self.summaryData objectFromJSONData];
-    NSLog(@"the dic:%@",dic);
+//    NSLog(@"the dic:%@",dic);
     NSArray *pageArr = [dic objectForKey:kPage];
     [pageArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSMutableDictionary *_ownDict = [NSMutableDictionary dictionaryWithCapacity:1];

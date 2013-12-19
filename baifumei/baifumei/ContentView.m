@@ -32,16 +32,17 @@
         [self setBackgroundColor:kBgColor ];
         
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-        [self.scrollView setAutoresizingMask:
-         UIViewAutoresizingFlexibleBottomMargin|
- 
-         UIViewAutoresizingFlexibleLeftMargin|
-         UIViewAutoresizingFlexibleRightMargin|
-         UIViewAutoresizingFlexibleTopMargin
-
-         ];
+//        [self.scrollView setAutoresizingMask:
+//         UIViewAutoresizingFlexibleBottomMargin|
+// 
+//         UIViewAutoresizingFlexibleLeftMargin|
+//         UIViewAutoresizingFlexibleRightMargin|
+//         UIViewAutoresizingFlexibleTopMargin
+//
+//         ];
         [self addSubview:self.scrollView];
         [self.scrollView setHidden:YES];
+        
     }
     return self;
 }
@@ -67,15 +68,16 @@
 //在接受完毕网络数据时，此处设置view为一个淡入的效果
 #pragma mark --- ComUnitDelegate
 -(void)comUnitCompleteWith:(NSMutableDictionary *)dicInfo{
+     NSLog(@"当前正在加载视图tag____:%d",self.tag);
     [dicInfo enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([obj isKindOfClass: [NSMutableArray class]]) {
             NSMutableArray *a = obj;
             [a enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                NSLog(@"++++-----%@",obj);
+//                NSLog(@"++++-----%@",obj);
             }];
                     }
-        else
-            NSLog(@"the key:%@-----%@",key,obj);
+//        else
+//            NSLog(@"the key:%@-----%@",key,obj);
     }];
     
     [self contentVeiwRmoveSubViewsOfScrollView];
@@ -95,7 +97,7 @@
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.contentSize.width,self.scrollView.contentSize.height + disImgView.frame.size.height)];
     [self.scrollView addSubview:disImgView];
 
-    [self.loadingImgView setHidden:YES];
+    
     [self animationFadeIn];
 }
 -(void)contentVeiwRmoveSubViewsOfScrollView{
@@ -111,7 +113,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.alpha = 1.0f;
     }completion:^(BOOL finished) {
-        
+//        [self.loadingImgView setHidden:YES];
     }];
 }
 @end
