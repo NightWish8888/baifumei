@@ -6,12 +6,13 @@
 //  Copyright (c) 2013年 Zhu Zhihai. All rights reserved.
 //
 
-#import "CommmentsView.h"
-#define kImgView_W     280.0f
-#define kimgView_H     150.0f
+#import "CommentsView.h"
+#define kImgView_W     130.0f
+#define kimgView_H     80.0f
 #define kCommentText_W      280.0f
-#define kImgViewPadding_V 10.0f
-@implementation CommmentsView
+#define kImgViewPadding_V   10.0f
+
+@implementation CommentsView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -46,19 +47,10 @@
             UIImageView *imgView = [[UIImageView alloc] initWithFrame:(CGRect){imgView_Point,CGSizeMake(kImgView_W, kimgView_H)}];
             [imgView setImage:[UIImage imageNamed:@"无评论.png"]];
             [self addSubview:imgView];
-
-             }
-             }
-             return self;
-             }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+        }
+    }
+    return self;
 }
-*/
+
 
 @end

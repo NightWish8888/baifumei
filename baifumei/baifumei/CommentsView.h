@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CommmentsView : UIView
+@interface CommentsView : UIView
 
 -(id)initWithCommentCount:(int)count CommentDetails:(NSMutableArray *)details Position:(CGPoint)pos Width:(float)width  Parent:(UIScrollView *)scrollView;
 @end

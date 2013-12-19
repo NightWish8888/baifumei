@@ -103,7 +103,11 @@
     NSLog(@"the  Img height--------:%g",disImgView.frame.size.height);
     NSLog(@"the count--------:%d",content_Img.count);
     point = CGPointMake(0, headView.frame.origin.y + headView.frame.size.height + disImgView.frame.origin.y + (disImgView.frame.size.height + kImgViewPadding_V)* content_Img.count + self.scrollView.contentSize.height);
-    CommmentsView *commentView = [[CommmentsView alloc] initWithCommentCount:0 CommentDetails:nil Position:point Width:self.scrollView.frame.size.width Parent:self.scrollView];
+    CommentsView *commentView = [[CommentsView alloc] initWithCommentCount:0 CommentDetails:nil Position:point Width:self.scrollView.frame.size.width Parent:self.scrollView];
+    [commentView setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin |
+     UIViewAutoresizingFlexibleLeftMargin|
+     UIViewAutoresizingFlexibleRightMargin|
+     UIViewAutoresizingFlexibleTopMargin];
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.contentSize.width, self.scrollView.contentSize.height + commentView.frame.size.height)];
     [self.scrollView addSubview:commentView];
 
