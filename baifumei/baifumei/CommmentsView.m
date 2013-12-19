@@ -27,7 +27,7 @@
     self = [super init];
     if (self) {
         if (count == 0) {
-            CGRect fRect = (CGRect){{(width - kCommentText_W)*.5,0},{kCommentText_W,0}};
+            CGRect fRect = (CGRect){{(width - kCommentText_W)*.5,0},{kCommentText_W,20}};
             UILabel *commentLabel = [[UILabel alloc] initWithFrame:fRect];
             [commentLabel setFont:[UIFont systemFontOfSize:15]];
             [commentLabel setText:@"评论：0"];

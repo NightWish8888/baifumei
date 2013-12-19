@@ -10,6 +10,7 @@
 #define kloadingImgViewWidth  220
 #define kloadingImgViewHeight 100
 
+#define kImgViewPadding_V 10.0f
 #define kHeaderViewHeight    44.0f
 @implementation ContentView
 
@@ -98,7 +99,10 @@
     [self.scrollView addSubview:disImgView];
     
     //评价
-    point = CGPointMake(0, disImgView.frame.origin.y + disImgView.frame.size.height);
+    NSLog(@"the  scroll height--------:%g",self.scrollView.contentSize.height);
+    NSLog(@"the  Img height--------:%g",disImgView.frame.size.height);
+    NSLog(@"the count--------:%d",content_Img.count);
+    point = CGPointMake(0, headView.frame.origin.y + headView.frame.size.height + disImgView.frame.origin.y + (disImgView.frame.size.height + kImgViewPadding_V)* content_Img.count + self.scrollView.contentSize.height);
     CommmentsView *commentView = [[CommmentsView alloc] initWithCommentCount:0 CommentDetails:nil Position:point Width:self.scrollView.frame.size.width Parent:self.scrollView];
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.contentSize.width, self.scrollView.contentSize.height + commentView.frame.size.height)];
     [self.scrollView addSubview:commentView];
