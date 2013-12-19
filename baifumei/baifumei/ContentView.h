@@ -10,6 +10,7 @@
 #import "ComUnit.h"
 #import "HeaderView.h"
 #import "DisplayImgView.h"
+#import "CommmentsView.h"
 @interface ContentView : UIView<ComUnitDelegate>{
     
 }
