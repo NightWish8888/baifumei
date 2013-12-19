@@ -99,19 +99,10 @@
     [self.scrollView addSubview:disImgView];
     
     //评价
-    NSLog(@"the  scroll height--------:%g",self.scrollView.contentSize.height);
-    NSLog(@"the  Img height--------:%g",disImgView.frame.size.height);
-    NSLog(@"the count--------:%d",content_Img.count);
-    point = CGPointMake(0, headView.frame.origin.y + headView.frame.size.height + disImgView.frame.origin.y + (disImgView.frame.size.height + kImgViewPadding_V)* content_Img.count + self.scrollView.contentSize.height);
-    CommentsView *commentView = [[CommentsView alloc] initWithCommentCount:0 CommentDetails:nil Position:point Width:self.scrollView.frame.size.width Parent:self.scrollView];
-    [commentView setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin |
-     UIViewAutoresizingFlexibleLeftMargin|
-     UIViewAutoresizingFlexibleRightMargin|
-     UIViewAutoresizingFlexibleTopMargin];
+    point = CGPointMake(0,disImgView.frame.origin.y + disImgView.frame.size.height);
+    CommentsView *commentView = [[CommentsView alloc] initWithCommentDetails:nil Position:point Width:self.scrollView.frame.size.width];
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.contentSize.width, self.scrollView.contentSize.height + commentView.frame.size.height)];
     [self.scrollView addSubview:commentView];
-
-    
     [self animationFadeIn];
 }
 -(void)contentVeiwRmoveSubViewsOfScrollView{
@@ -127,7 +118,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.alpha = 1.0f;
     }completion:^(BOOL finished) {
-//        [self.loadingImgView setHidden:YES];
+        [self.loadingImgView setHidden:YES];
     }];
 }
 @end

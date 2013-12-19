@@ -10,5 +10,5 @@
 
 @interface CommentsView : UIView
 
--(id)initWithCommentCount:(int)count CommentDetails:(NSMutableArray *)details Position:(CGPoint)pos Width:(float)width  Parent:(UIScrollView *)scrollView;
+-(id)initWithCommentDetails:(NSMutableArray *)details Position:(CGPoint)pos Width:(float)width;
 @end

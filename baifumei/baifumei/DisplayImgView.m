@@ -61,6 +61,13 @@
                     [imgView setImage:img];
                     [self addSubview:imgView];
                     [scrollView setContentSize:CGSizeMake(scrollView.contentSize.width,scrollView.contentSize.height + addH)];
+                    [scrollView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                        if ([NSStringFromClass([obj class]) isEqualToString:@"CommentsView"]) {
+                            UIView *v = obj;
+                            [v setCenter:CGPointMake(v.center.x, scrollView.contentSize.height - v.frame.size.height *.5)];
+                            *stop = YES;
+                        }
+                    }];
                 });
             });
         }];
