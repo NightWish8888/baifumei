@@ -216,12 +216,12 @@
     }
     
 }
--(void)contentVeiwRmoveSubViewsOfScrollView:(ContentView *)view{
-    [[view.scrollView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        UIView *v = obj;
-        [v removeFromSuperview];
-    }];
-}
+//-(void)contentVeiwRmoveSubViewsOfScrollView:(ContentView *)view{
+//    [[view.scrollView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//        UIView *v = obj;
+//        [v removeFromSuperview];
+//    }];
+//}
 -(void)animationScaleType:(ContentView *)view{ //缩放动画
     CGRect rectOld = view.bounds;
     [UIView animateWithDuration:1 animations:^{
@@ -233,7 +233,7 @@
         view.hidden = YES;
         view.alpha = 1.0f;
         view.bounds = rectOld;
-        [self contentVeiwRmoveSubViewsOfScrollView:view];
+//        [self contentVeiwRmoveSubViewsOfScrollView:view];
         [view resetImageViewFrame];
     }];
 }
@@ -245,7 +245,7 @@
      } completion:^(BOOL finished) {
          view.hidden=YES;
          view.alpha = 1.0f;
-         [self contentVeiwRmoveSubViewsOfScrollView:view];
+//         [self contentVeiwRmoveSubViewsOfScrollView:view];
      }];
 }
 -(void)animationTransitionCurl:(ContentView *)view{ //翻页动画
@@ -256,7 +256,7 @@
      } completion:^(BOOL finished) {
          view.hidden=YES;
          view.alpha = 1.0f;
-         [self contentVeiwRmoveSubViewsOfScrollView:view];
+//         [self contentVeiwRmoveSubViewsOfScrollView:view];
      }];
 }
 #pragma mark ---UIActionSheet Delegate

@@ -32,6 +32,14 @@
         [self setBackgroundColor:kBgColor ];
         
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        [self.scrollView setAutoresizingMask:
+         UIViewAutoresizingFlexibleBottomMargin|
+ 
+         UIViewAutoresizingFlexibleLeftMargin|
+         UIViewAutoresizingFlexibleRightMargin|
+         UIViewAutoresizingFlexibleTopMargin
+
+         ];
         [self addSubview:self.scrollView];
         [self.scrollView setHidden:YES];
     }
