@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		740267421862A0CC000FC216 /* CommmentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 740267411862A0CC000FC216 /* CommmentsView.m */; };
 		8C14DC25185DD0390097F5B7 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C14DC24185DD0390097F5B7 /* HeaderView.m */; };
 		8C14DC281860A8020097F5B7 /* DisplayImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C14DC271860A8020097F5B7 /* DisplayImgView.m */; };
 		8CA2144E1855F5310066E239 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2144D1855F5310066E239 /* SettingViewController.m */; };
@@ -311,6 +312,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		740267401862A0CC000FC216 /* CommmentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommmentsView.h; sourceTree = "<group>"; };
+		740267411862A0CC000FC216 /* CommmentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommmentsView.m; sourceTree = "<group>"; };
 		8C14DC23185DD0390097F5B7 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		8C14DC24185DD0390097F5B7 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		8C14DC261860A8020097F5B7 /* DisplayImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayImgView.h; sourceTree = "<group>"; };
@@ -732,6 +735,8 @@
 				8C14DC24185DD0390097F5B7 /* HeaderView.m */,
 				8C14DC261860A8020097F5B7 /* DisplayImgView.h */,
 				8C14DC271860A8020097F5B7 /* DisplayImgView.m */,
+				740267401862A0CC000FC216 /* CommmentsView.h */,
+				740267411862A0CC000FC216 /* CommmentsView.m */,
 			);
 			name = "ContentView  (展示网络数据）";
 			sourceTree = "<group>";
@@ -1584,6 +1589,7 @@
 				8CCDF3B6185D591D001DA03E /* NSString+StringRegular.m in Sources */,
 				C2C0A1A4184EF6D300645B92 /* Helper.m in Sources */,
 				8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */,
+				740267421862A0CC000FC216 /* CommmentsView.m in Sources */,
 				8C14DC25185DD0390097F5B7 /* HeaderView.m in Sources */,
 				C2ACBA4A1855963100F6D336 /* KxMenu.m in Sources */,
 				8CA2144E1855F5310066E239 /* SettingViewController.m in Sources */,
