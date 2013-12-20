@@ -48,10 +48,18 @@
     [self.contentView2 setTag:2];
     
     
-    [self.contentView addSubview:self.contentView1];
     [self.contentView addSubview:self.contentView2];
+    [self.contentView addSubview:self.contentView1];
     
+    UILabel *l1 = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 100, 100)];
+    [l1 setText:@"我是view 11111"];
+    [l1 setTextColor:[UIColor redColor]];
+    [self.contentView1 addSubview:l1];
     
+    UILabel *l2 = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 100, 100)];
+    [l2 setText:@"我是view 22222"];
+    [l2 setTextColor:[UIColor blueColor]];
+    [self.contentView2 addSubview:l2];
 //    [self.contentView1 setHidden:YES];
 //    [self.contentView2 setHidden:YES];
     
@@ -184,19 +192,18 @@
 }
 
 - (IBAction)nextPage:(UIButton *)sender {
+    self.nextPageBtn.enabled = NO;
     if (sender.tag == 1) {
         sender.tag = 2;
         [self.contentView bringSubviewToFront:self.contentView1];
         self.contentView2.hidden = NO;
         [self animationContentView:self.contentView1];
-        [ComUnit addUpdateContentView:self.contentView1];
     }
     else{
         sender.tag = 1;
         [self.contentView bringSubviewToFront:self.contentView2];
         self.contentView1.hidden = NO;
         [self animationContentView:self.contentView2];
-        [ComUnit addUpdateContentView:self.contentView2];
     }
 }
 -(void)animationContentView:(ContentView *)view{
@@ -208,11 +215,15 @@
             break;
         }
         case 1:{
-            [self animationTransitionFlip:view];
+            [self animationScaleType:view];
+
+//            [self animationTransitionFlip:view];
             break;
         }
         case 2:{
-            [self animationTransitionCurl:view];
+            [self animationScaleType:view];
+
+//            [self animationTransitionCurl:view];
             break;
         }
         default:
@@ -220,12 +231,7 @@
     }
     
 }
-//-(void)contentVeiwRmoveSubViewsOfScrollView:(ContentView *)view{
-//    [[view.scrollView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        UIView *v = obj;
-//        [v removeFromSuperview];
-//    }];
-//}
+
 -(void)animationScaleType:(ContentView *)view{ //缩放动画
     CGRect rectOld = view.bounds;
     [UIView animateWithDuration:1 animations:^{
@@ -234,11 +240,14 @@
         view.bounds = rect;
         view.alpha = 0.0f;
     }completion:^(BOOL finished) {
+        self.nextPageBtn.enabled = YES;
+
         view.hidden = YES;
         view.alpha = 1.0f;
         view.bounds = rectOld;
-//        [self contentVeiwRmoveSubViewsOfScrollView:view];
         [view resetImageViewFrame];
+        [ComUnit addUpdateContentView:view];
+
     }];
 }
 -(void)animationTransitionFlip:(ContentView *)view{ //翻转动画
@@ -247,9 +256,11 @@
          [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:view cache:YES];
          view.alpha = 0.0f;
      } completion:^(BOOL finished) {
+         self.nextPageBtn.enabled = YES;
          view.hidden=YES;
          view.alpha = 1.0f;
-//         [self contentVeiwRmoveSubViewsOfScrollView:view];
+         [ComUnit addUpdateContentView:view];
+
      }];
 }
 -(void)animationTransitionCurl:(ContentView *)view{ //翻页动画
@@ -258,9 +269,11 @@
          [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:view cache:YES];
          view.alpha = 0.0f;
      } completion:^(BOOL finished) {
+         self.nextPageBtn.enabled = YES;
          view.hidden=YES;
          view.alpha = 1.0f;
-//         [self contentVeiwRmoveSubViewsOfScrollView:view];
+         [ComUnit addUpdateContentView:view];
+
      }];
 }
 #pragma mark ---UIActionSheet Delegate

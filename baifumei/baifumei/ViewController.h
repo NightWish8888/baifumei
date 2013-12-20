@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
+@property (weak, nonatomic) IBOutlet UIButton *nextPageBtn;
 
 - (IBAction)rate:(UIButton *)sender;
 - (IBAction)share:(UIButton *)sender;

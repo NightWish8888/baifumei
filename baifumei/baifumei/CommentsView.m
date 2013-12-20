@@ -80,6 +80,11 @@
             [self setFrame:(CGRect){self.frame.origin,{self.frame.size.width,self.frame.size.height + 2*kNoRateImgView_Padding_V + kNoRateImgView_H}}];
             [self addSubview:noRateImgView];
         }
+        else{
+            //请编写存在评论部分的代码。。。。。、
+            //........
+            //.........
+        }
     }
     return self;
 }

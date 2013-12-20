@@ -172,6 +172,7 @@
                     <connections>
                         <outlet property="bgView" destination="kh9-bI-dsS" id="dQ7-XG-NxI"/>
                         <outlet property="contentView" destination="nBs-Wo-NsY" id="jzY-Wo-6BN"/>
+                        <outlet property="nextPageBtn" destination="szT-9S-XC9" id="hOs-uM-CDM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
