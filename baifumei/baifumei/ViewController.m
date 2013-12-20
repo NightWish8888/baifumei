@@ -187,15 +187,15 @@
     if (sender.tag == 1) {
         sender.tag = 2;
         [self.contentView bringSubviewToFront:self.contentView1];
-        self.contentView2.hidden = NO;
-        [self animationContentView:self.contentView1];
+//        self.contentView2.hidden = NO;
+//        [self animationContentView:self.contentView1];
         [ComUnit addUpdateContentView:self.contentView1];
     }
     else{
         sender.tag = 1;
         [self.contentView bringSubviewToFront:self.contentView2];
-        self.contentView1.hidden = NO;
-        [self animationContentView:self.contentView2];
+//        self.contentView1.hidden = NO;
+//        [self animationContentView:self.contentView2];
         [ComUnit addUpdateContentView:self.contentView2];
     }
 }
@@ -238,8 +238,10 @@
         view.alpha = 1.0f;
         view.bounds = rectOld;
 //        [self contentVeiwRmoveSubViewsOfScrollView:view];
-        [view resetImageViewFrame];
+//        [view resetImageViewFrame];
     }];
+    view.hidden=YES;
+    NSLog(@"--------the view's hidden:%@",view.hidden? @"YES":@"NO");
 }
 -(void)animationTransitionFlip:(ContentView *)view{ //翻转动画
     [UIView animateWithDuration:1 animations:^
@@ -251,6 +253,8 @@
          view.alpha = 1.0f;
 //         [self contentVeiwRmoveSubViewsOfScrollView:view];
      }];
+    view.hidden=YES;
+    NSLog(@"--------the view's hidden:%@",view.hidden? @"YES":@"NO");
 }
 -(void)animationTransitionCurl:(ContentView *)view{ //翻页动画
     [UIView animateWithDuration:1 animations:^
@@ -262,6 +266,8 @@
          view.alpha = 1.0f;
 //         [self contentVeiwRmoveSubViewsOfScrollView:view];
      }];
+    view.hidden=YES;
+    NSLog(@"--------the view's hidden:%@",view.hidden? @"YES":@"NO");
 }
 #pragma mark ---UIActionSheet Delegate
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -319,7 +325,6 @@
                                                          authViewStyle:SSAuthViewStyleFullScreenPopup
                                                           viewDelegate:nil
                                                authManagerViewDelegate:_appDelegate.viewDelegate];
-    
     //在授权页面中添加关注官方微博
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
                                     [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
