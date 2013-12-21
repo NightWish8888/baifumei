@@ -51,17 +51,15 @@
     [self.contentView addSubview:self.contentView2];
     [self.contentView addSubview:self.contentView1];
     
-    UILabel *l1 = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 100, 100)];
-    [l1 setText:@"我是view 11111"];
-    [l1 setTextColor:[UIColor redColor]];
-    [self.contentView1 addSubview:l1];
-    
-    UILabel *l2 = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 100, 100)];
-    [l2 setText:@"我是view 22222"];
-    [l2 setTextColor:[UIColor blueColor]];
-    [self.contentView2 addSubview:l2];
-//    [self.contentView1 setHidden:YES];
-//    [self.contentView2 setHidden:YES];
+//    UILabel *l1 = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 100, 100)];
+//    [l1 setText:@"我是view 11111"];
+//    [l1 setTextColor:[UIColor redColor]];
+//    [self.contentView1 addSubview:l1];
+//    
+//    UILabel *l2 = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 100, 100)];
+//    [l2 setText:@"我是view 22222"];
+//    [l2 setTextColor:[UIColor blueColor]];
+//    [self.contentView2 addSubview:l2];
     
 }
 -(void)configureNavItem{
@@ -215,15 +213,11 @@
             break;
         }
         case 1:{
-            [self animationScaleType:view];
-
-//            [self animationTransitionFlip:view];
+            [self animationTransitionFlip:view];
             break;
         }
         case 2:{
-            [self animationScaleType:view];
-
-//            [self animationTransitionCurl:view];
+            [self animationTransitionCurl:view];
             break;
         }
         default:
@@ -241,7 +235,6 @@
         view.alpha = 0.0f;
     }completion:^(BOOL finished) {
         self.nextPageBtn.enabled = YES;
-
         view.hidden = YES;
         view.alpha = 1.0f;
         view.bounds = rectOld;
@@ -260,7 +253,6 @@
          view.hidden=YES;
          view.alpha = 1.0f;
          [ComUnit addUpdateContentView:view];
-
      }];
 }
 -(void)animationTransitionCurl:(ContentView *)view{ //翻页动画
@@ -273,7 +265,6 @@
          view.hidden=YES;
          view.alpha = 1.0f;
          [ComUnit addUpdateContentView:view];
-
      }];
 }
 #pragma mark ---UIActionSheet Delegate

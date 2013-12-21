@@ -33,14 +33,16 @@
         [self setBackgroundColor:kBgColor ];
         
         self.scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
-//        [self.scrollView setAutoresizingMask:
-//         UIViewAutoresizingFlexibleBottomMargin|
-// 
-//         UIViewAutoresizingFlexibleLeftMargin|
-//         UIViewAutoresizingFlexibleRightMargin|
-//         UIViewAutoresizingFlexibleTopMargin
-//
-//         ];
+        [self.scrollView setAutoresizingMask:
+         UIViewAutoresizingFlexibleBottomMargin|
+ 
+         UIViewAutoresizingFlexibleLeftMargin|
+         UIViewAutoresizingFlexibleRightMargin|
+         UIViewAutoresizingFlexibleTopMargin
+         ];
+        [self setClipsToBounds:YES];
+        [self setContentMode:UIViewContentModeScaleAspectFit];
+        [self.scrollView setClipsToBounds:YES];
         [self addSubview:self.scrollView];
         [self.scrollView setHidden:YES];
         
@@ -115,7 +117,7 @@
 -(void)animationFadeIn{
     [self.scrollView setHidden:NO];
     self.alpha = 0.0f;
-    self.hidden = NO;
+//    self.hidden = NO;
     [UIView animateWithDuration:0.5 animations:^{
         self.alpha = 1.0f;
     }completion:^(BOOL finished) {
