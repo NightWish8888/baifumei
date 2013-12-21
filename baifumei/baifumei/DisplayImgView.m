@@ -10,6 +10,9 @@
 #define kImgView_W     280.0f
 #define kText_W      280.0f
 #define kImgViewPadding_V  10.0f
+
+#define kActivityBgView_W   280.0f
+#define kActivityBgView_H   45.0f
 @implementation DisplayImgView
 
 - (id)initWithFrame:(CGRect)frame
@@ -38,6 +41,20 @@
         fRect = contentStrLabel.frame;
         [self setFrame:(CGRect){pos,{width,fRect.size.height + kImgViewPadding_V}}];
         [self addSubview:contentStrLabel];
+        
+        
+        /************/
+        UIView *activityBg = [[UIView alloc] initWithFrame:CGRectMake(contentStrLabel.frame.origin.x, self.frame.size.height, kActivityBgView_W, kActivityBgView_H)];
+        [activityBg setBackgroundColor:[UIColor clearColor]];
+        UIActivityIndicatorView *ac = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [ac setCenter:CGPointMake(activityBg.frame.size.width*.5, activityBg.frame.size.height*.5)];
+        [activityBg addSubview:ac];
+        [ac startAnimating];
+        [self setFrame:(CGRect){self.frame.origin,{self.frame.size.width,self.frame.size.height + kActivityBgView_H}}];
+        [self addSubview:activityBg];
+        
+        /*************/
+        NSInteger count = array.count;
         [array enumerateObjectsUsingBlock:^(NSString *imgUrl, NSUInteger idx, BOOL *stop) {
             dispatch_queue_t queue = dispatch_queue_create("queue", NULL);
             dispatch_async(queue, ^{
@@ -49,7 +66,7 @@
                     CGSize imgView_Size = CGSizeMake(kImgView_W, imgView_H);
                     
                     float x = (width - kImgView_W)*.5;
-                    float y = self.frame.size.height;
+                    float y = self.frame.size.height - kActivityBgView_H;
                     CGPoint imgView_Point = CGPointMake(x, y);
                     
                     UIImageView *imgView = [[UIImageView alloc] initWithFrame:(CGRect){imgView_Point,imgView_Size}];
@@ -57,9 +74,16 @@
                     float oldH = self.frame.size.height;
                     [self setFrame:(CGRect){self.frame.origin,{self.frame.size.width,self.frame.size.height + imgView_H + kImgViewPadding_V}}];
                     float addH = self.frame.size.height - oldH;
-                    
+    
                     [imgView setImage:img];
                     [self addSubview:imgView];
+                    if (count == idx + 1) {
+                        [activityBg removeFromSuperview];
+                    }
+                    else{
+                        [activityBg setCenter:CGPointMake(activityBg.center.x, self.frame.size.height - activityBg.frame.size.height*.5)];
+                    }
+                    
                     [scrollView setContentSize:CGSizeMake(scrollView.contentSize.width,scrollView.contentSize.height + addH)];
                     
                     [scrollView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {

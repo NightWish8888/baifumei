@@ -278,6 +278,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
+//    NSURL *url = [NSURL URLWithString:@"http://192.168.1.108/baidu.php"];
+//    NSString *str = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+//    NSLog(@"the str:%@",str);
+    
+    
+    
     /**
      注册SDK应用，此应用请到http://www.sharesdk.cn中进行注册申请。
      此方法必须在启动时调用，否则会限制SDK的使用。
