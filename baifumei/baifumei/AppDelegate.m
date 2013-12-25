@@ -279,11 +279,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    
 //    NSURL *url = [NSURL URLWithString:@"http://192.168.1.108/baidu.php"];
 //    NSString *str = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
 //    NSLog(@"the str:%@",str);
     
+    
+    NSLog(@"homeDictionary:%@",NSHomeDirectory());
+    
+    //创建初始化database
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"InitState"] == 0) {
+        [DBManager initDB];
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"InitState"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        //创建一个首次启动时间
+        //            [[NSUserDefaults standardUserDefaults] setInteger:[[NSDate date] timeIntervalSince1970] forKey:@"time"];
+        
+    }
     
     
     /**

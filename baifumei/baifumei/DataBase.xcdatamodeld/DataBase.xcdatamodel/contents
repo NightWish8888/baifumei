@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Album" representedClassName="Album" syncable="YES">
+        <attribute name="albumID" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="albumName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ownedImage" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Images" inverseName="imageForAlbum" inverseEntity="Images" syncable="YES"/>
+    </entity>
+    <entity name="Images" representedClassName="Images" syncable="YES">
+        <attribute name="albumID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="savedDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="imageForAlbum" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="ownedImage" inverseEntity="Album" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Images" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Album" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>

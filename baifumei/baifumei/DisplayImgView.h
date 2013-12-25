@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface DisplayImgView : UIView
+#import "CustomActionSheet.h"
+@interface DisplayImgView : UIView<UIActionSheetDelegate,UIGestureRecognizerDelegate>
+{
+    NSData *imageData;
+}
 -(id)initWithContentText:(NSString *)text  ImgArray:(NSMutableArray *)array Position:(CGPoint)pos Width:(float)width  Parent:(UIScrollView *)scrollView;
 @end
