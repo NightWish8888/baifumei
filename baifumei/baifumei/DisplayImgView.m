@@ -30,10 +30,6 @@
 -(id)initWithContentText:(NSString *)contentStr  ImgArray:(NSMutableArray *)array Position:(CGPoint)pos  Width:(float)width    Parent:(UIScrollView *)scrollView;{
     self = [super init];
     if (self) {
-
-        UILongPressGestureRecognizer *longPressed = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageViewLongPressed:)];
-        longPressed.delegate = self;
-        longPressed.minimumPressDuration = 1.0f;
 //        [self addGestureRecognizer:longPressed];
 //        CGRect textRect = [contentStr boundingRectWithSize:CGSizeMake(kText_W, 0.0f) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading   attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:15] forKey:@"UITextAttributeFont"] context:nil];
         
@@ -79,14 +75,19 @@
                     
                     UIImageView *imgView = [[UIImageView alloc] initWithFrame:(CGRect){imgView_Point,imgView_Size}];
                     
+                    //手势事件
+                    UILongPressGestureRecognizer *longPressed = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageViewLongPressed:)];
+                    longPressed.delegate = self;
+                    longPressed.minimumPressDuration = .5f;
+                    
                     float oldH = self.frame.size.height;
                     [self setFrame:(CGRect){self.frame.origin,{self.frame.size.width,self.frame.size.height + imgView_H + kImgViewPadding_V}}];
                     float addH = self.frame.size.height - oldH;
     
                     [imgView setImage:img];
-                    [self addSubview:imgView];
-                    
+                    [imgView setUserInteractionEnabled:YES];
                     [imgView addGestureRecognizer:longPressed];
+                    [self addSubview:imgView];
                     
                     if (count == idx + 1) {
                         [activityBg removeFromSuperview];
@@ -118,7 +119,7 @@
             UIImageView *imageView = (UIImageView *)gestureRecognizer.view;
             UIImage *image = imageView.image;
             imageData = UIImageJPEGRepresentation(image, 1);
-            UIButton *saveImageBtn = [self actionBtn:NSLocalizedString(@"save image",@"保存图片") Image:nil Frame:CGRectMake(0,0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png"  TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+            UIButton *saveImageBtn = [self actionBtn:NSLocalizedString(@"save image", @"保存图片") Image:nil Frame:CGRectMake(0,0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png"  TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, 0, 0, 0)];
             NSMutableArray *btnArray = [ NSMutableArray arrayWithObjects:saveImageBtn, nil];
             CustomActionSheet *sheet = [[CustomActionSheet alloc] initWithArray:btnArray CancelBtnTitle:NSLocalizedString(@"cancel", @"取消")];
             sheet.delegate = self;
@@ -145,9 +146,16 @@
 
 #pragma mark ---UIActionSheet Delegate
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if(actionSheet.tag == 0) {
-        
-        
+    if(buttonIndex == 0) {
+        NSManagedObjectContext *context = [DBManager shareContext];
+        [context lock];
+        Images *img = [NSEntityDescription insertNewObjectForEntityForName:@"Images" inManagedObjectContext:context];
+        [img setAlbumID:[NSNumber numberWithInt:1]];
+        [img setImage:imageData];
+        [img setSavedDate:[NSDate date]];
+        [context save:nil];
+        [context unlock];
+        NSLog(@"----------- save successed");
     }
 }
 

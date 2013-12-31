@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomActionSheet.h"
+#import "DBManager.h"
 @interface DisplayImgView : UIView<UIActionSheetDelegate,UIGestureRecognizerDelegate>
 {
     NSData *imageData;

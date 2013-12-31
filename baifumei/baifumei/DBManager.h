@@ -14,4 +14,6 @@
 
 @interface DBManager : NSObject
 +(void)initDB;
++(NSManagedObjectContext *)shareContext;
++(NSArray *)selectData:(NSString *)tableName;
 @end

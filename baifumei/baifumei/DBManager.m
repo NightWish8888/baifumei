@@ -18,9 +18,11 @@ static NSManagedObjectContext *context;
     
     Album *album = [NSEntityDescription insertNewObjectForEntityForName:@"Album" inManagedObjectContext:context];
     [album setAlbumName:@"我的相册"];
+    [album setAlbumID:[NSNumber numberWithInt:1]];
     
-    album = [NSEntityDescription insertNewObjectForEntityForName:@"Album" inManagedObjectContext:context];
-    [album setAlbumName:@"111"];
+//    album = [NSEntityDescription insertNewObjectForEntityForName:@"Album" inManagedObjectContext:context];
+//    [album setAlbumName:@"111"];
+    
     [context save:nil];
     [context unlock];
 }
@@ -44,6 +46,19 @@ static NSManagedObjectContext *context;
 +(NSManagedObjectContext *)shareContext{
     [DBManager configureDataBase];
     return  context;
+}
+
++(NSArray *)selectData:(NSString *)tableName
+{
+    if (!context) {
+        [DBManager configureDataBase];
+    }
+    NSFetchRequest *request=[NSFetchRequest fetchRequestWithEntityName:tableName];
+    //    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"listID == %@",[NSNumber numberWithInteger:listID]];
+    //    [request setPredicate:predicate];
+    NSArray *array = [context executeFetchRequest:request error:nil];
+    return array;
+
 }
 
 @end

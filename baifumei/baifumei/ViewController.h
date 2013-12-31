@@ -16,8 +16,10 @@
 #import "SettingViewController.h"
 #import "ContentView.h"
 #import "BroswerViewController.h"
+#import "ArchiveImagePicker.h"
+#import "DBManager.h"
 @class AppDelegate;
-@interface ViewController : UIViewController<UIActionSheetDelegate>
+@interface ViewController : UIViewController<UIActionSheetDelegate,ArchiveImagePickerDelegate>
 {
     AppDelegate *_appDelegate;
 }

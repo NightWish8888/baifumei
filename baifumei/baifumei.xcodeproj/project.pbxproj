@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		740267421862A0CC000FC216 /* CommentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 740267411862A0CC000FC216 /* CommentsView.m */; };
+		7413BEC918712051007C770E /* ArchiveImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7413BEC818712051007C770E /* ArchiveImagePicker.m */; };
+		7413BECC187120CF007C770E /* ArchiveImagePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7413BECB187120CF007C770E /* ArchiveImagePickerCell.m */; };
+		74E85DE1186B08100015B75E /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E85DE0186B08100015B75E /* Album.m */; };
+		74E85DE4186B08110015B75E /* Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E85DE3186B08110015B75E /* Images.m */; };
 		74EF8FD118659B1E00FFB173 /* DataBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 74EF8FCF18659B1E00FFB173 /* DataBase.xcdatamodeld */; };
-		74EF8FD718659D6900FFB173 /* Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EF8FD618659D6900FFB173 /* Images.m */; };
 		74EF8FDA1865BDE500FFB173 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EF8FD91865BDE500FFB173 /* DBManager.m */; };
 		74EF8FDC1865C38C00FFB173 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EF8FDB1865C38C00FFB173 /* CoreData.framework */; };
-		74EF8FDF1865C4F500FFB173 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EF8FDE1865C4F500FFB173 /* Album.m */; };
 		8C14DC25185DD0390097F5B7 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C14DC24185DD0390097F5B7 /* HeaderView.m */; };
 		8C14DC281860A8020097F5B7 /* DisplayImgView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C14DC271860A8020097F5B7 /* DisplayImgView.m */; };
 		8CA2144E1855F5310066E239 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CA2144D1855F5310066E239 /* SettingViewController.m */; };
@@ -319,14 +321,18 @@
 /* Begin PBXFileReference section */
 		740267401862A0CC000FC216 /* CommentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsView.h; sourceTree = "<group>"; };
 		740267411862A0CC000FC216 /* CommentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsView.m; sourceTree = "<group>"; };
+		7413BEC718712051007C770E /* ArchiveImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveImagePicker.h; sourceTree = "<group>"; };
+		7413BEC818712051007C770E /* ArchiveImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveImagePicker.m; sourceTree = "<group>"; };
+		7413BECA187120CF007C770E /* ArchiveImagePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveImagePickerCell.h; sourceTree = "<group>"; };
+		7413BECB187120CF007C770E /* ArchiveImagePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveImagePickerCell.m; sourceTree = "<group>"; };
+		74E85DDF186B08100015B75E /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
+		74E85DE0186B08100015B75E /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
+		74E85DE2186B08100015B75E /* Images.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Images.h; sourceTree = "<group>"; };
+		74E85DE3186B08110015B75E /* Images.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Images.m; sourceTree = "<group>"; };
 		74EF8FD018659B1E00FFB173 /* DataBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataBase.xcdatamodel; sourceTree = "<group>"; };
-		74EF8FD518659D6900FFB173 /* Images.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Images.h; sourceTree = "<group>"; };
-		74EF8FD618659D6900FFB173 /* Images.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Images.m; sourceTree = "<group>"; };
 		74EF8FD81865BDE500FFB173 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		74EF8FD91865BDE500FFB173 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		74EF8FDB1865C38C00FFB173 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		74EF8FDD1865C4F500FFB173 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
-		74EF8FDE1865C4F500FFB173 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
 		8C14DC23185DD0390097F5B7 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		8C14DC24185DD0390097F5B7 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		8C14DC261860A8020097F5B7 /* DisplayImgView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayImgView.h; sourceTree = "<group>"; };
@@ -729,14 +735,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7413BEC618711F8C007C770E /* ManageImages */ = {
+			isa = PBXGroup;
+			children = (
+				7413BEC718712051007C770E /* ArchiveImagePicker.h */,
+				7413BEC818712051007C770E /* ArchiveImagePicker.m */,
+				7413BECA187120CF007C770E /* ArchiveImagePickerCell.h */,
+				7413BECB187120CF007C770E /* ArchiveImagePickerCell.m */,
+			);
+			name = ManageImages;
+			sourceTree = "<group>";
+		};
 		74EF8FCE18659AF100FFB173 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				74E85DDF186B08100015B75E /* Album.h */,
+				74E85DE2186B08100015B75E /* Images.h */,
+				74E85DE3186B08110015B75E /* Images.m */,
+				74E85DE0186B08100015B75E /* Album.m */,
 				74EF8FCF18659B1E00FFB173 /* DataBase.xcdatamodeld */,
-				74EF8FDD1865C4F500FFB173 /* Album.h */,
-				74EF8FDE1865C4F500FFB173 /* Album.m */,
-				74EF8FD518659D6900FFB173 /* Images.h */,
-				74EF8FD618659D6900FFB173 /* Images.m */,
 				74EF8FD81865BDE500FFB173 /* DBManager.h */,
 				74EF8FD91865BDE500FFB173 /* DBManager.m */,
 			);
@@ -1045,6 +1062,7 @@
 		8CBCA3E61848DB8700447B78 /* baifumei */ = {
 			isa = PBXGroup;
 			children = (
+				7413BEC618711F8C007C770E /* ManageImages */,
 				74EF8FCE18659AF100FFB173 /* DataBase */,
 				8CCDF3B7185D592C001DA03E /* NSString+StringRegular */,
 				8CCDF3AE185C890D001DA03E /* JSON Kit */,
@@ -1613,22 +1631,24 @@
 			files = (
 				8C14DC281860A8020097F5B7 /* DisplayImgView.m in Sources */,
 				8CAA572A184F65C700BAB564 /* BroswerViewController.m in Sources */,
-				74EF8FD718659D6900FFB173 /* Images.m in Sources */,
-				74EF8FDF1865C4F500FFB173 /* Album.m in Sources */,
+				74E85DE1186B08100015B75E /* Album.m in Sources */,
 				C2C0A1A0184EEB8D00645B92 /* AGViewDelegate.m in Sources */,
 				8CCDF3B1185C8922001DA03E /* JSONKit.m in Sources */,
+				7413BEC918712051007C770E /* ArchiveImagePicker.m in Sources */,
 				8CA2145318560DB60066E239 /* ContentView.m in Sources */,
 				8CCDF3B6185D591D001DA03E /* NSString+StringRegular.m in Sources */,
 				74EF8FD118659B1E00FFB173 /* DataBase.xcdatamodeld in Sources */,
 				C2C0A1A4184EF6D300645B92 /* Helper.m in Sources */,
 				8CAA5725184E1DCB00BAB564 /* CustomActionSheet.m in Sources */,
 				740267421862A0CC000FC216 /* CommentsView.m in Sources */,
+				7413BECC187120CF007C770E /* ArchiveImagePickerCell.m in Sources */,
 				8C14DC25185DD0390097F5B7 /* HeaderView.m in Sources */,
 				C2ACBA4A1855963100F6D336 /* KxMenu.m in Sources */,
 				8CA2144E1855F5310066E239 /* SettingViewController.m in Sources */,
 				8CBCA3FA1848DB8700447B78 /* ViewController.m in Sources */,
 				8CBCA3F11848DB8700447B78 /* AppDelegate.m in Sources */,
 				8CBCA3ED1848DB8700447B78 /* main.m in Sources */,
+				74E85DE4186B08110015B75E /* Images.m in Sources */,
 				8CCDF3AC185C2860001DA03E /* ComUnit.m in Sources */,
 				74EF8FDA1865BDE500FFB173 /* DBManager.m in Sources */,
 			);
