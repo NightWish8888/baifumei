@@ -51,15 +51,15 @@
     [self.contentView addSubview:self.contentView2];
     [self.contentView addSubview:self.contentView1];
     
-//    UILabel *l1 = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 100, 100)];
-//    [l1 setText:@"我是view 11111"];
-//    [l1 setTextColor:[UIColor redColor]];
-//    [self.contentView1 addSubview:l1];
-//    
-//    UILabel *l2 = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 100, 100)];
-//    [l2 setText:@"我是view 22222"];
-//    [l2 setTextColor:[UIColor blueColor]];
-//    [self.contentView2 addSubview:l2];
+    //    UILabel *l1 = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 100, 100)];
+    //    [l1 setText:@"我是view 11111"];
+    //    [l1 setTextColor:[UIColor redColor]];
+    //    [self.contentView1 addSubview:l1];
+    //
+    //    UILabel *l2 = [[UILabel alloc] initWithFrame:CGRectMake(20, 40, 100, 100)];
+    //    [l2 setText:@"我是view 22222"];
+    //    [l2 setTextColor:[UIColor blueColor]];
+    //    [self.contentView2 addSubview:l2];
     
 }
 -(void)configureNavItem{
@@ -70,12 +70,12 @@
     [_menuItem setImage:[UIImage imageNamed:@"标题下拉箭头_收缩.png"] forState:UIControlStateNormal];
     float imgwidth = _menuItem.imageView.image.size.width;
     float titlewidth = [_menuItem.titleLabel.text sizeWithFont:[UIFont systemFontOfSize:18]].width;
-//    float titlewidth = [_menuItem.titleLabel.text sizeWithAttributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:15] forKey:@"UITextAttributeFont"]].width;
+    //    float titlewidth = [_menuItem.titleLabel.text sizeWithAttributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:15] forKey:@"UITextAttributeFont"]].width;
     [_menuItem setTitleEdgeInsets:UIEdgeInsetsMake(0, 2*-imgwidth , 0, 0)];
     [_menuItem setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0,2* -titlewidth)];
     [_menuItem addTarget:self action:@selector(selectMenu:) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationItem setTitleView:_menuItem];
-
+    
     
     UIButton *setbtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     [setbtn setImage:[UIImage imageNamed:@"无头像.png"] forState:UIControlStateNormal];
@@ -107,7 +107,7 @@
                  menuItems:menuItems];
 }
 -(void)selectMenu:(UIButton *)sender{
-
+    
     NSArray *menuItems =
     @[
       [KxMenuItem menuItem:@"白富美那点事儿"
@@ -156,10 +156,10 @@
     return btn;
 }
 - (IBAction)rate:(UIButton *)sender {
-
-     UIButton *sina_btn = [self actionBtn:NSLocalizedString(@"use weibo login", @"用微博账号登陆") Image:@"新浪微博账号登录.png" Frame:CGRectMake(0, 0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png" TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, -10, 0, 10)];
-
-     UIButton *ten_btn = [self actionBtn:NSLocalizedString(@"use tengxun login", @"用QQ账号登陆") Image:@"QQ账号登录.png" Frame:CGRectMake(0,0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png"  TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, -10, 0, 10)];
+    
+    UIButton *sina_btn = [self actionBtn:NSLocalizedString(@"use weibo login", @"用微博账号登陆") Image:@"新浪微博账号登录.png" Frame:CGRectMake(0, 0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png" TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, -10, 0, 10)];
+    
+    UIButton *ten_btn = [self actionBtn:NSLocalizedString(@"use tengxun login", @"用QQ账号登陆") Image:@"QQ账号登录.png" Frame:CGRectMake(0,0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png"  TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, -10, 0, 10)];
     
     NSMutableArray *btnArray = [ NSMutableArray arrayWithObjects:sina_btn,ten_btn, nil];
     CustomActionSheet *sheet = [[CustomActionSheet alloc] initWithArray:btnArray CancelBtnTitle:NSLocalizedString(@"cancel", @"取消")];
@@ -170,9 +170,22 @@
 
 - (IBAction)share:(UIButton *)sender {
     [Helper menuShare];
-    }
+}
 
 - (IBAction)love:(id)sender {
+    NSMutableArray *imgArray = [[NSMutableArray alloc] init];
+    NSArray *array = [DBManager selectData:@"Images"];
+    if (array) {
+        for (Images *img in array) {
+            [imgArray addObject:img.image];
+        }
+        
+        ArchiveImagePicker *archiveImg = [[ArchiveImagePicker alloc] initWithData:imgArray Targate:self];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:archiveImg];
+        [self presentViewController:nav animated:YES completion:nil];
+        
+    }
+    
 }
 
 - (IBAction)more:(UIButton *)sender {
@@ -240,7 +253,7 @@
         view.bounds = rectOld;
         [view resetImageViewFrame];
         [ComUnit addUpdateContentView:view];
-
+        
     }];
 }
 -(void)animationTransitionFlip:(ContentView *)view{ //翻转动画
@@ -339,26 +352,26 @@
                     viewDelegate:_appDelegate.viewDelegate
                           result:^(SSResponseState state, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
                               
-//                              NSString *msg = nil;
-//                              if (state == SSResponseStateSuccess)
-//                              {
-//                                  msg = @"关注成功";
-//                              }
-//                              else if (state == SSResponseStateFail)
-//                              {
-//                                  msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
-//                              }
-//                              
-//                              if (msg)
-//                              {
-//                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-//                                                                                      message:msg
-//                                                                                     delegate:nil
-//                                                                            cancelButtonTitle:@"知道了"
-//                                                                            otherButtonTitles:nil];
-//                                  [alertView show];
-//                                  [alertView release];
-//                              }
+                              //                              NSString *msg = nil;
+                              //                              if (state == SSResponseStateSuccess)
+                              //                              {
+                              //                                  msg = @"关注成功";
+                              //                              }
+                              //                              else if (state == SSResponseStateFail)
+                              //                              {
+                              //                                  msg = [NSString stringWithFormat:@"关注失败:%@", error.errorDescription];
+                              //                              }
+                              //
+                              //                              if (msg)
+                              //                              {
+                              //                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                              //                                                                                      message:msg
+                              //                                                                                     delegate:nil
+                              //                                                                            cancelButtonTitle:@"知道了"
+                              //                                                                            otherButtonTitles:nil];
+                              //                                  [alertView show];
+                              //                                  [alertView release];
+                              //                              }
                           }];
     NSLog(@"sina......");
 }
@@ -423,7 +436,7 @@
                                      NSLog(@"发布失败!error code == %d, error code == %@", [error errorCode], [error errorDescription]);
                                  }
                              }];
-
+    
 }
 /****************更多*******************/
 -(void)moreAction:(NSInteger)buttonIndex{
@@ -466,6 +479,10 @@
 
 #pragma mark ---popView delegate
 
-
+#pragma mark ---viewImage delegate
+-(void)selectImgInfo:(UIImage *)img
+{
+    NSLog(@"the img text");
+}
 
 @end

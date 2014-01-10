@@ -13,6 +13,10 @@
 
 #define kActivityBgView_W   280.0f
 #define kActivityBgView_H   45.0f
+
+#define kbtnWidth       260
+#define kbtnHeight      40
+
 @implementation DisplayImgView
 
 - (id)initWithFrame:(CGRect)frame
@@ -26,7 +30,7 @@
 -(id)initWithContentText:(NSString *)contentStr  ImgArray:(NSMutableArray *)array Position:(CGPoint)pos  Width:(float)width    Parent:(UIScrollView *)scrollView;{
     self = [super init];
     if (self) {
-
+//        [self addGestureRecognizer:longPressed];
 //        CGRect textRect = [contentStr boundingRectWithSize:CGSizeMake(kText_W, 0.0f) options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading   attributes:[NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:15] forKey:@"UITextAttributeFont"] context:nil];
         
         CGRect fRect = (CGRect){{(width - kText_W)*.5,0},{kText_W,0}};
@@ -71,12 +75,20 @@
                     
                     UIImageView *imgView = [[UIImageView alloc] initWithFrame:(CGRect){imgView_Point,imgView_Size}];
                     
+                    //手势事件
+                    UILongPressGestureRecognizer *longPressed = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleImageViewLongPressed:)];
+                    longPressed.delegate = self;
+                    longPressed.minimumPressDuration = .5f;
+                    
                     float oldH = self.frame.size.height;
                     [self setFrame:(CGRect){self.frame.origin,{self.frame.size.width,self.frame.size.height + imgView_H + kImgViewPadding_V}}];
                     float addH = self.frame.size.height - oldH;
     
                     [imgView setImage:img];
+                    [imgView setUserInteractionEnabled:YES];
+                    [imgView addGestureRecognizer:longPressed];
                     [self addSubview:imgView];
+                    
                     if (count == idx + 1) {
                         [activityBg removeFromSuperview];
                     }
@@ -98,6 +110,53 @@
         }];
     }
     return self;
+}
+
+-(void)handleImageViewLongPressed:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        if ([gestureRecognizer.view isKindOfClass:[UIImageView class]]) {
+            UIImageView *imageView = (UIImageView *)gestureRecognizer.view;
+            UIImage *image = imageView.image;
+            imageData = UIImageJPEGRepresentation(image, 1);
+            UIButton *saveImageBtn = [self actionBtn:NSLocalizedString(@"save image", @"保存图片") Image:nil Frame:CGRectMake(0,0, kbtnWidth, kbtnHeight)  NormalImg:@"白按钮.png" HighlightImg:@"白按钮_按下.png"  TitleColor:[UIColor blackColor] TitleEdgeInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+            NSMutableArray *btnArray = [ NSMutableArray arrayWithObjects:saveImageBtn, nil];
+            CustomActionSheet *sheet = [[CustomActionSheet alloc] initWithArray:btnArray CancelBtnTitle:NSLocalizedString(@"cancel", @"取消")];
+            sheet.delegate = self;
+            [sheet showInView:self];
+                    }
+    }
+}
+
+-(UIButton *)actionBtn:(NSString *)title Image:(NSString *)imageName Frame:(CGRect)frame  NormalImg:(NSString *)normalImg HighlightImg:(NSString *)highlightImg TitleColor:(UIColor *)color TitleEdgeInset:(UIEdgeInsets)titleEdgeInsets{
+    
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setFrame:frame];
+    [btn setBackgroundImage:[UIImage imageNamed:normalImg] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:highlightImg] forState:UIControlStateHighlighted];
+    [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [btn setTitle:title forState:UIControlStateNormal];
+    [btn setImageEdgeInsets:UIEdgeInsetsMake(0, -40, 0, 40)];
+    [btn setTitleEdgeInsets:titleEdgeInsets];
+    [btn setTitleColor:color forState:UIControlStateNormal];
+    [btn.titleLabel setFont:[UIFont boldSystemFontOfSize:19]];
+    return btn;
+}
+
+#pragma mark ---UIActionSheet Delegate
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 0) {
+        NSManagedObjectContext *context = [DBManager shareContext];
+        [context lock];
+        Images *img = [NSEntityDescription insertNewObjectForEntityForName:@"Images" inManagedObjectContext:context];
+        [img setAlbumID:[NSNumber numberWithInt:1]];
+        [img setImage:imageData];
+        [img setSavedDate:[NSDate date]];
+        [context save:nil];
+        [context unlock];
+        NSLog(@"----------- save successed");
+    }
 }
 
 @end
